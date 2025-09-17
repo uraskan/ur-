@@ -1,45 +1,539 @@
-<!DOCTYPE html><!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الموقع تحت الصيانة</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>خدمات مكتب أور الإلكترونية</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c8/Utbildningsradion_-_logo.png" type="image/png" />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --secondary: #7209b7;
+      --accent: #4cc9f0;
+      --dark: #0d1b2a;
+      --dark-light: #1b263b;
+      --light: #f8f9fa;
+      --success: #4ade80;
+      --warning: #facc15;
+      --danger: #f87171;
+      --gray: #6b7280;
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --header-height: 70px;
+    }
+    
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    html, body {
+      height: 100%;
+      background: linear-gradient(160deg, var(--dark), var(--dark-light));
+      font-family: 'Cairo', sans-serif;
+      color: white;
+      direction: rtl;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header Styles */
+    header {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0;
+      height: var(--header-height);
+      background: rgba(26, 36, 61, 0.95);
+      backdrop-filter: blur(12px);
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      padding: 0 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    
+    .typing-text {
+      position: relative; 
+      min-width: 200px; 
+      height: 40px; 
+      overflow: hidden;
       text-align: center;
-      padding: 100px 20px;
     }
-    h1 {
-      font-size: 2.5em;
+    
+    .typing-text span {
+      position: absolute; 
+      top: 0; 
+      left: 0;
+      opacity: 0; 
+      transform: translateY(15px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      width: 100%; 
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #fff, #c0d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 10px rgba(76, 201, 240, 0.3);
+    }
+    
+    .typing-text span.active {
+      opacity: 1; 
+      transform: translateY(0); 
+      z-index: 1;
+    }
+    
+    /* Main Content */
+    main {
+      margin-top: var(--header-height);
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .hero {
+      background: linear-gradient(120deg, rgba(67, 97, 238, 0.15), rgba(114, 9, 183, 0.15));
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #fff, #a0bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    /* Buttons Container */
+    #buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
       margin-bottom: 20px;
-      color: #d9534f;
     }
-    p {
-      font-size: 1.2em;
+    
+    .btn {
+      width: 100%;
+      max-width: 400px;
+      padding: 18px 22px;
+      font-size: 1.1rem; 
+      font-weight: 600;
+      text-align: right; 
+      background: var(--card-bg);
+      border-radius: 18px; 
+      color: white;
+      cursor: pointer; 
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      user-select: none; 
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
     }
-    .loader {
-      margin: 30px auto;
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #d9534f;
-      border-radius: 50%;
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(67, 97, 238, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .btn:hover:not(.disabled) {
+      background: rgba(67, 97, 238, 0.15);
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.25);
+      transform: translateY(-4px);
+      border-color: rgba(76, 201, 240, 0.3);
+    }
+    
+    .btn:hover:not(.disabled)::before {
+      opacity: 1;
+    }
+    
+    .btn:active:not(.disabled) {
+      transform: translateY(-2px);
+    }
+    
+    .btn.disabled {
+      background: rgba(107, 114, 128, 0.15); 
+      color: rgba(255, 255, 255, 0.5);
+      cursor: not-allowed; 
+      box-shadow: none;
+      transform: none; 
+      border-color: rgba(119, 119, 119, 0.2);
+    }
+    
+    .btn i {
+      font-size: 1.4rem;
+      width: 30px;
+      text-align: center;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+    
+    .btn:hover:not(.disabled) i {
+      transform: scale(1.15);
+    }
+    
+    .btn-text {
+      flex: 1;
+    }
+    
+    .btn-arrow {
+      font-size: 1.2rem;
+      opacity: 0.7;
+      transition: transform 0.3s ease;
+    }
+    
+    .btn:hover:not(.disabled) .btn-arrow {
+      transform: translateX(-5px);
+    }
+    
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .spinner {
       width: 50px;
       height: 50px;
-      animation: spin 1s linear infinite;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border-top-color: var(--accent);
+      animation: spin 1.2s ease-in-out infinite;
     }
+    
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      :root {
+        --header-height: 65px;
+      }
+      
+      header {
+        padding: 0 15px;
+      }
+      
+      .typing-text {
+        min-width: 180px;
+        height: 35px;
+      }
+      
+      .typing-text span {
+        font-size: 1.1rem;
+      }
+      
+      main {
+        padding: 15px;
+        gap: 15px;
+      }
+      
+      .hero {
+        padding: 20px;
+      }
+      
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      
+      .btn {
+        padding: 16px 20px;
+        font-size: 1rem;
+        border-radius: 16px;
+        gap: 12px;
+      }
+      
+      .btn i {
+        font-size: 1.3rem;
+        width: 28px;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      header {
+        height: 60px;
+      }
+      
+      .typing-text span {
+        font-size: 1rem;
+      }
+      
+      main {
+        margin-top: 60px;
+        padding: 12px;
+      }
+      
+      .hero {
+        padding: 18px;
+        border-radius: 16px;
+      }
+      
+      .hero h1 {
+        font-size: 1.3rem;
+      }
+      
+      .btn {
+        padding: 15px 18px;
+        font-size: 0.95rem;
+        border-radius: 14px;
+        gap: 10px;
+      }
+      
+      .btn i {
+        font-size: 1.2rem;
+        width: 26px;
+      }
+    }
+    
+    /* Animation for buttons when they load */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .btn {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: rgba(67, 97, 238, 0.4);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(67, 97, 238, 0.6);
     }
   </style>
 </head>
+
 <body>
-  <h1>🚧 الموقع متوقف مؤقتاً 🚧</h1>
-  <p>نقوم حالياً بأعمال صيانة وتحديثات.<br>سيعود الموقع للعمل قريباً على نفس الرابط.</p>
-  <div class="loader"></div>
+  <header>
+    <div class="typing-text" aria-live="polite" aria-atomic="true">
+      <span class="active">مكتب أور</span>
+      <span>للخدمات الإلكترونية</span>
+      <span>نحن نعمل لخدمتكم</span>
+      <span>24 ساعة</span>
+      <span>على مدار الأسبوع</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>مرحباً بكم في مكتب أور الإلكتروني</h1>
+      <p>نقدم لكم مجموعة متكاملة من الخدمات الإلكترونية التي تلبي جميع احتياجاتكم بدقة واحترافية عالية، مع فريق عمل متخصص على مدار الساعة</p>
+    </section>
+    
+    <div id="buttons-container">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>جاري تحميل الخدمات...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>جميع الحقوق محفوظة © مكتب أور 2025</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQES1QM4s9yDJ49hldDwI_ictXZDciPCk",
+      authDomain: "ur111-824e3.firebaseapp.com",
+      projectId: "ur111-824e3",
+      storageBucket: "ur111-824e3.appspot.com",
+      messagingSenderId: "310052619923",
+      appId: "1:310052619923:web:4f3a1f37932d4ca1506f66",
+      measurementId: "G-7SMM3VWNT2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const buttonsContainer = document.getElementById('buttons-container');
+    const texts = document.querySelectorAll('.typing-text span');
+    let current = 0;
+    setInterval(() => {
+      texts[current].classList.remove('active');
+      current = (current + 1) % texts.length;
+      texts[current].classList.add('active');
+    }, 4000);
+
+    // دالة للحصول على الأيقونة المناسبة بناءً على اسم الخدمة
+    function getIconForService(serviceName) {
+      const name = serviceName.toLowerCase();
+      
+      if (name.includes('دفع') || name.includes('مال') || name.includes('دفعة') || name.includes('فاتورة')) 
+        return 'fas fa-credit-card';
+      if (name.includes('استعلام') || name.includes('سؤال') || name.includes('معلومات')) 
+        return 'fas fa-info-circle';
+      if (name.includes('طلب') || name.includes('احتياج') || name.includes('شراء')) 
+        return 'fas fa-clipboard-list';
+      if (name.includes('تواصل') || name.includes('اتصال') || name.includes('دعم')) 
+        return 'fas fa-headset';
+      if (name.includes('حجز') || name.includes('موعد') || name.includes('مقابلة')) 
+        return 'fas fa-calendar-check';
+      if (name.includes('تسجيل') || name.includes('حساب') || name.includes('مستخدم')) 
+        return 'fas fa-user-plus';
+      if (name.includes('تقرير') || name.includes('إحصائية') || name.includes('بيانات')) 
+        return 'fas fa-chart-bar';
+      if (name.includes('بطاقة') || name.includes('هوية') || name.includes('تعريف')) 
+        return 'fas fa-address-card';
+      if (name.includes('معاملة') || name.includes('معاملات') || name.includes('إجراء')) 
+        return 'fas fa-file-contract';
+      if (name.includes('وثيقة') || name.includes('مستند') || name.includes('ملف')) 
+        return 'fas fa-file-alt';
+      if (name.includes('تعديل') || name.includes('تغيير') || name.includes('تحرير')) 
+        return 'fas fa-edit';
+      if (name.includes('بحث') || name.includes('عن') || name.includes('بحث عن')) 
+        return 'fas fa-search';
+      if (name.includes('إشعار') || name.includes('تنبيه') || name.includes('إعلام')) 
+        return 'fas fa-bell';
+      if (name.includes('إعدادات') || name.includes('خصائص') || name.includes('تهيئة')) 
+        return 'fas fa-cog';
+      if (name.includes('مساعدة') || name.includes('دليل') || name.includes('تعليمات')) 
+        return 'fas fa-question-circle';
+      if (name.includes('تقييم') || name.includes('رأي') || name.includes('تقييم خدمة')) 
+        return 'fas fa-star';
+      
+      // إذا لم يتم العثور على تطابق، نعيد أيقونة افتراضية
+      return 'fas fa-concierge-bell';
+    }
+
+    async function loadButtonsData() {
+      try {
+        const docRef = doc(db, "serviceControl", "buttonsData");
+        const snapshot = await getDoc(docRef);
+        const data = snapshot.exists() ? snapshot.data().buttons : [];
+        renderButtons(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Firebase load error:", err);
+        buttonsContainer.innerHTML = '<p style="color:lightgray; text-align:center; padding: 20px;">حدث خطأ في تحميل الخدمات.</p>';
+      }
+    }
+
+    function renderButtons(buttonsData) {
+      buttonsContainer.innerHTML = '';
+      if (!buttonsData.length) {
+        buttonsContainer.innerHTML = '<p style="color:lightgray; text-align:center; padding: 20px;">لا توجد خدمات حالياً.</p>';
+        return;
+      }
+      
+      buttonsData.forEach((btn, index) => {
+        if (!btn.active) return;
+        const el = document.createElement('div');
+        el.className = 'btn';
+        el.style.animationDelay = `${index * 0.1}s`;
+        
+        // إنشاء العنصر الداخلي للأيقونة
+        const iconElement = document.createElement('i');
+        iconElement.className = getIconForService(btn.name || 'خدمة');
+        
+        // إنشاء العنصر الداخلي للنص
+        const textElement = document.createElement('span');
+        textElement.className = 'btn-text';
+        textElement.textContent = btn.name || 'خدمة';
+        
+        // إنشاء سهم للزر
+        const arrowElement = document.createElement('i');
+        arrowElement.className = 'btn-arrow fas fa-arrow-left';
+        
+        // إضافة العناصر إلى الزر
+        el.appendChild(iconElement);
+        el.appendChild(textElement);
+        el.appendChild(arrowElement);
+        
+        if (btn.paused) {
+          el.classList.add('disabled');
+          el.onclick = e => { 
+            e.preventDefault(); 
+            alert('عذراً، هذه الخدمة مؤقتاً غير متوفرة'); 
+          };
+        } else {
+          el.onclick = () => btn.url && window.open(btn.url, '_blank');
+        }
+        buttonsContainer.appendChild(el);
+      });
+    }
+
+    // تحميل البيانات عند بدء التشغيل
+    loadButtonsData();
+  </script>
 </body>
 </html>
-
-

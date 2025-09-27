@@ -30,7 +30,6 @@
       --card-bg: rgba(255, 255, 255, 0.08);
       --card-border: rgba(255, 255, 255, 0.12);
       --header-height: 70px;
-      --sidebar-width: 280px;
     }
     
     * { 
@@ -46,8 +45,6 @@
       color: white;
       direction: rtl;
       overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
     }
     
     /* شاشة الافتتاح */
@@ -151,7 +148,176 @@
       color: rgba(255, 255, 255, 0.7);
     }
     
-    /* Header Styles - محسّن */
+    /* شاشة تسجيل الدخول */
+    .login-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, var(--dark), var(--dark-light));
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 20px;
+    }
+    
+    .login-container {
+      background: rgba(26, 36, 61, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 40px;
+      width: 100%;
+      max-width: 450px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    
+    .login-logo {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #4cc9f0, #4361ee, #7209b7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+    
+    .login-title {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: white;
+      font-weight: 700;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      text-align: right;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+    }
+    
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      justify-content: flex-end;
+    }
+    
+    .remember-me input {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+      margin-bottom: 20px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+    }
+    
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .toggle-form {
+      color: var(--accent);
+      cursor: pointer;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    
+    .alert {
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      text-align: right;
+    }
+    
+    .alert-success {
+      background: rgba(74, 222, 128, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+    
+    .alert-danger {
+      background: rgba(248, 113, 113, 0.2);
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+    
+    .alert-warning {
+      background: rgba(250, 204, 21, 0.2);
+      color: var(--warning);
+      border: 1px solid var(--warning);
+    }
+    
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-left: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-left: 10px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* المحتوى الرئيسي */
+    .main-content {
+      display: none;
+      height: 100%;
+      flex-direction: column;
+    }
+    
+    /* Header Styles */
     header {
       position: fixed; 
       top: 0; 
@@ -162,11 +328,18 @@
       backdrop-filter: blur(12px);
       display: flex; 
       align-items: center; 
-      justify-content: center;
+      justify-content: space-between;
       z-index: 100;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
       padding: 0 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
     }
     
     .typing-text {
@@ -201,7 +374,52 @@
       z-index: 1;
     }
     
-    /* Main Content - محسّن */
+    /* User Info Styles */
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .welcome-user {
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(to right, #4cc9f0, #4361ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .logout-btn {
+      background: rgba(248, 113, 113, 0.2);
+      color: var(--danger);
+      border: 1px solid var(--danger);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .logout-btn:hover {
+      background: rgba(248, 113, 113, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    /* Main Content */
     main {
       margin-top: var(--header-height);
       flex: 1;
@@ -210,7 +428,6 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      -webkit-overflow-scrolling: touch;
     }
     
     /* تحسينات على قسم الترحيب */
@@ -623,53 +840,29 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* Responsive Design - محسّن */
-    @media screen and (max-width: 1024px) {
-      .services-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 18px;
-      }
-    }
-    
+    /* Responsive Design */
     @media screen and (max-width: 768px) {
-      :root {
-        --header-height: 65px;
+      .login-container {
+        padding: 30px 20px;
+        margin: 10px;
       }
       
-      header {
-        padding: 0 15px;
+      .login-logo {
+        font-size: 2.8rem;
       }
       
-      .typing-text {
-        min-width: 180px;
-        height: 35px;
+      .login-title {
+        font-size: 1.5rem;
       }
       
-      .typing-text span {
-        font-size: 1.1rem;
+      .header-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
       }
       
-      main {
-        padding: 15px;
-        gap: 15px;
-      }
-      
-      .hero {
-        padding: 25px 20px;
-        border-radius: 20px;
-        min-height: 170px;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      .welcome-message {
-        font-size: 1.8rem;
+      .user-info {
+        justify-content: center;
       }
       
       .services-grid {
@@ -686,49 +879,25 @@
         height: 55px;
         font-size: 1.5rem;
       }
-      
-      /* شاشة الافتتاح للجوال */
-      .logo {
-        font-size: 3.5rem;
-      }
-      
-      .typing-text-splash {
-        font-size: 1.8rem;
-        height: 50px;
-      }
     }
     
     @media screen and (max-width: 480px) {
-      header {
-        height: 60px;
+      .login-container {
+        padding: 25px 15px;
       }
       
-      .typing-text span {
+      .login-logo {
+        font-size: 2.2rem;
+      }
+      
+      .welcome-user {
         font-size: 1rem;
       }
       
-      main {
-        margin-top: 60px;
-        padding: 12px;
-      }
-      
-      .hero {
-        padding: 20px 15px;
-        border-radius: 16px;
-        min-height: 150px;
-      }
-      
-      .hero h1 {
-        font-size: 1.7rem;
-      }
-      
-      .hero p {
+      .user-avatar {
+        width: 35px;
+        height: 35px;
         font-size: 1rem;
-      }
-      
-      .welcome-message {
-        font-size: 1.5rem;
-        padding: 0 10px;
       }
       
       .service-card {
@@ -739,78 +908,7 @@
         width: 50px;
         height: 50px;
         font-size: 1.4rem;
-        margin-bottom: 12px;
       }
-      
-      .service-title {
-        font-size: 1.1rem;
-      }
-      
-      .service-btn {
-        padding: 7px 14px;
-        font-size: 0.8rem;
-      }
-      
-      .features-section {
-        padding: 20px 15px;
-      }
-      
-      .features-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-      
-      .feature-item {
-        padding: 15px;
-      }
-      
-      /* شاشة الافتتاح للجوال */
-      .logo {
-        font-size: 2.8rem;
-      }
-      
-      .typing-text-splash {
-        font-size: 1.5rem;
-        height: 40px;
-      }
-      
-      .version {
-        font-size: 1rem;
-      }
-    }
-    
-    /* Animation for cards when they load */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .service-card, .feature-item {
-      animation: fadeInUp 0.5s ease forwards;
-    }
-    
-    /* Scrollbar styling */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.1);
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: rgba(67, 97, 238, 0.4);
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(67, 97, 238, 0.6);
     }
   </style>
 </head>
@@ -831,92 +929,148 @@
     <div class="version">الإصدار 2.3</div>
   </div>
 
+  <!-- شاشة تسجيل الدخول -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-container">
+      <div class="login-logo">أور</div>
+      <h1 class="login-title" id="loginTitle">تسجيل الدخول</h1>
+      
+      <div id="alertContainer"></div>
+      
+      <form id="authForm">
+        <div class="form-group">
+          <label for="email">البريد الإلكتروني</label>
+          <input type="email" id="email" class="form-control" required placeholder="example@email.com">
+        </div>
+        
+        <div class="form-group">
+          <label for="password">كلمة المرور</label>
+          <input type="password" id="password" class="form-control" required placeholder="********">
+        </div>
+        
+        <div class="remember-me">
+          <input type="checkbox" id="rememberMe">
+          <label for="rememberMe">تذكرني</label>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="submitText">تسجيل الدخول</span>
+          <div class="spinner" id="formSpinner" style="display: none;"></div>
+        </button>
+      </form>
+      
+      <div>
+        <span id="toggleText">ليس لديك حساب؟ </span>
+        <span class="toggle-form" id="toggleForm">إنشاء حساب</span>
+      </div>
+    </div>
+  </div>
+
   <!-- المحتوى الرئيسي -->
-  <header>
-    <div class="typing-text" aria-live="polite" aria-atomic="true">
-      <span class="active">مكتب أور</span>
-      <span>للخدمات الإلكترونية</span>
-      <span>نحن نعمل لخدمتكم</span>
-      <span>24 ساعة</span>
-      <span>على مدار الأسبوع</span>
-    </div>
-  </header>
-
-  <main>
-    <!-- نص التحية المتحرك - محسّن -->
-    <div class="welcome-text">
-      <div class="welcome-message" id="welcomeMessage">مرحباً بكم في مكتب أور الإلكتروني</div>
-    </div>
-    
-    <section class="hero">
-      <h1>مكتب أور للخدمات الإلكترونية</h1>
-      <p>نقدم لكم مجموعة متكاملة من الخدمات الإلكترونية بأعلى معايير الجودة والاحترافية</p>
-    </section>
-    
-    <!-- قسم الخدمات - محسّن -->
-    <div class="features-section">
-      <h2 class="section-title">خدماتنا</h2>
-      <div id="buttons-container">
-        <div class="loading">
-          <div class="spinner"></div>
-          <p>جاري تحميل الخدمات...</p>
+  <div class="main-content" id="mainContent">
+    <header>
+      <div class="header-content">
+        <div class="typing-text" aria-live="polite" aria-atomic="true">
+          <span class="active">مكتب أور</span>
+          <span>للخدمات الإلكترونية</span>
+          <span>نحن نعمل لخدمتكم</span>
+          <span>24 ساعة</span>
+          <span>على مدار الأسبوع</span>
+        </div>
+        
+        <div class="user-info" id="userInfo">
+          <div class="welcome-user" id="welcomeUser">مرحباً، أحمد!</div>
+          <div class="user-avatar" id="userAvatar">أ</div>
+          <button class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
         </div>
       </div>
-    </div>
-    
-    <!-- قسم الميزات - محسّن -->
-    <div class="features-section">
-      <h2 class="section-title">مميزات مكتب أور</h2>
-      <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <div class="feature-content">
-            <h3>أمان وحماية</h3>
-            <p>نضمن حماية بياناتك ومعاملاتك بأعلى معايير الأمان الإلكتروني</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-clock"></i>
-          </div>
-          <div class="feature-content">
-            <h3>خدمة 24/7</h3>
-            <p>خدمة عملاء متاحة على مدار الساعة طوال أيام الأسبوع</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <div class="feature-content">
-            <h3>سرعة في الأداء</h3>
-            <p>إنجاز الخدمات في أسرع وقت ممكن مع الحفاظ على الجودة</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-hand-holding-usd"></i>
-          </div>
-          <div class="feature-content">
-            <h3>أسعار تنافسية</h3>
-            <p>أسعارنا مناسبة للجميع مع عروض وتخفيضات مستمرة</p>
+    </header>
+
+    <main>
+      <!-- نص التحية المتحرك -->
+      <div class="welcome-text">
+        <div class="welcome-message" id="welcomeMessage">مرحباً بكم في مكتب أور الإلكتروني</div>
+      </div>
+      
+      <section class="hero">
+        <h1>مكتب أور للخدمات الإلكترونية</h1>
+        <p>نقدم لكم مجموعة متكاملة من الخدمات الإلكترونية بأعلى معايير الجودة والاحترافية</p>
+      </section>
+      
+      <!-- قسم الخدمات -->
+      <div class="features-section">
+        <h2 class="section-title">خدماتنا</h2>
+        <div id="buttons-container">
+          <div class="loading">
+            <div class="spinner"></div>
+            <p>جاري تحميل الخدمات...</p>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+      
+      <!-- قسم الميزات -->
+      <div class="features-section">
+        <h2 class="section-title">مميزات مكتب أور</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="feature-content">
+              <h3>أمان وحماية</h3>
+              <p>نضمن حماية بياناتك ومعاملاتك بأعلى معايير الأمان الإلكتروني</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="feature-content">
+              <h3>خدمة 24/7</h3>
+              <p>خدمة عملاء متاحة على مدار الساعة طوال أيام الأسبوع</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="feature-content">
+              <h3>سرعة في الأداء</h3>
+              <p>إنجاز الخدمات في أسرع وقت ممكن مع الحفاظ على الجودة</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <div class="feature-content">
+              <h3>أسعار تنافسية</h3>
+              <p>أسعارنا مناسبة للجميع مع عروض وتخفيضات مستمرة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
-  <footer>
-    <p>جميع الحقوق محفوظة © مكتب أور 2025</p>
-  </footer>
+    <footer>
+      <p>جميع الحقوق محفوظة © مكتب أور 2025</p>
+    </footer>
+  </div>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+    // إعدادات Firebase للتسجيل (القاعدة الجديدة)
+    const authFirebaseConfig = {
+      apiKey: "AIzaSyCzpxIaiiwy-Fxl8iDICAITfj8mpFrYWhk",
+      authDomain: "iraq-b3faf.firebaseapp.com",
+      projectId: "iraq-b3faf",
+      storageBucket: "iraq-b3faf.firebasestorage.app",
+      messagingSenderId: "37770666033",
+      appId: "1:37770666033:web:359a45537323485d0a3510",
+      measurementId: "G-BWMXLSKECR"
+    };
 
-    const firebaseConfig = {
+    // إعدادات Firebase للخدمات (القاعدة القديمة)
+    const servicesFirebaseConfig = {
       apiKey: "AIzaSyDQES1QM4s9yDJ49hldDwI_ictXZDciPCk",
       authDomain: "ur111-824e3.firebaseapp.com",
       projectId: "ur111-824e3",
@@ -926,78 +1080,261 @@
       measurementId: "G-7SMM3VWNT2"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    // Import Firebase SDK
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { 
+      getAuth, 
+      createUserWithEmailAndPassword, 
+      signInWithEmailAndPassword, 
+      signOut,
+      onAuthStateChanged,
+      setPersistence,
+      browserSessionPersistence,
+      browserLocalPersistence
+    } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    import { 
+      getFirestore, 
+      doc, 
+      getDoc, 
+      setDoc,
+      collection,
+      addDoc
+    } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
-    const buttonsContainer = document.getElementById('buttons-container');
-    const welcomeMessage = document.getElementById('welcomeMessage');
-    const texts = document.querySelectorAll('.typing-text span');
+    // Initialize Firebase Apps
+    const authApp = initializeApp(authFirebaseConfig, "authApp");
+    const servicesApp = initializeApp(servicesFirebaseConfig, "servicesApp");
+    
+    const auth = getAuth(authApp);
+    const authDb = getFirestore(authApp); // قاعدة بيانات المستخدمين
+    const servicesDb = getFirestore(servicesApp); // قاعدة بيانات الخدمات
+
+    // عناصر DOM
     const splashScreen = document.getElementById('splashScreen');
+    const loginScreen = document.getElementById('loginScreen');
+    const mainContent = document.getElementById('mainContent');
     const loadingProgress = document.getElementById('loadingProgress');
     const loadingText = document.getElementById('loadingText');
-    let current = 0;
     
+    // عناصر نظام التسجيل
+    const authForm = document.getElementById('authForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const rememberMe = document.getElementById('rememberMe');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const formSpinner = document.getElementById('formSpinner');
+    const toggleForm = document.getElementById('toggleForm');
+    const toggleText = document.getElementById('toggleText');
+    const loginTitle = document.getElementById('loginTitle');
+    const alertContainer = document.getElementById('alertContainer');
+    const userInfo = document.getElementById('userInfo');
+    const welcomeUser = document.getElementById('welcomeUser');
+    const userAvatar = document.getElementById('userAvatar');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    const buttonsContainer = document.getElementById('buttons-container');
+
+    let isLoginMode = true;
+    let current = 0;
+
     // دالة لتحديث شريط التقدم
     function updateProgress(percent) {
       loadingProgress.style.width = percent + '%';
     }
-    
+
     // دالة لإخفاء شاشة الافتتاح
     function hideSplashScreen() {
       splashScreen.classList.add('hidden');
       setTimeout(() => {
         splashScreen.style.display = 'none';
+        loginScreen.style.display = 'flex';
       }, 800);
     }
-    
-    // محاكاة تحميل يعتمد على سرعة النت
+
+    // محاكاة تحميل
     function simulateLoading() {
       let progress = 0;
       const interval = setInterval(() => {
-        progress += Math.random() * 15; // سرعة عشوائية تعتمد على النت
+        progress += Math.random() * 15;
         if (progress >= 100) {
           progress = 100;
           clearInterval(interval);
+          hideSplashScreen();
         }
         updateProgress(progress);
         
         if (progress >= 30) loadingText.textContent = "جاري تحميل البيانات...";
-        if (progress >= 70) loadingText.textContent = "جاري تهيئة الواجهة...";
-        if (progress >= 90) loadingText.textContent = "جاري الإنهاء...";
+        if (progress >= 70) loadingText.textContent = "جاري تهيئة النظام...";
+        if (progress >= 90) loadingText.textContent = "جاهز للتسجيل...";
       }, 300);
     }
-    
+
     // بدء محاكاة التحميل
     simulateLoading();
-    
-    // حركة النص الترحيبي
-    const welcomeMessages = [
-      "مرحباً بكم في مكتب أور الإلكتروني",
-      "نحن هنا لخدمتكم على مدار الساعة",
-      "أفضل الخدمات الإلكترونية بين يديك",
-      "نسعى دائماً لرضاكم وتلبية احتياجاتكم"
-    ];
-    
-    let welcomeIndex = 0;
-    
-    function changeWelcomeMessage() {
-      welcomeMessage.style.opacity = 0;
-      setTimeout(() => {
-        welcomeIndex = (welcomeIndex + 1) % welcomeMessages.length;
-        welcomeMessage.textContent = welcomeMessages[welcomeIndex];
-        welcomeMessage.style.opacity = 1;
-      }, 500);
+
+    // دالة لعرض التنبيهات
+    function showAlert(message, type = 'danger') {
+      alertContainer.innerHTML = `
+        <div class="alert alert-${type}">
+          ${message}
+        </div>
+      `;
     }
-    
-    // تغيير نص الترحيب كل 5 ثوان
-    setInterval(changeWelcomeMessage, 5000);
-    
-    // حركة الشريط العلوي
-    setInterval(() => {
-      texts[current].classList.remove('active');
-      current = (current + 1) % texts.length;
-      texts[current].classList.add('active');
-    }, 4000);
+
+    // دالة لتبديل وضع النموذج
+    function toggleAuthMode() {
+      isLoginMode = !isLoginMode;
+      
+      if (isLoginMode) {
+        loginTitle.textContent = 'تسجيل الدخول';
+        submitText.textContent = 'تسجيل الدخول';
+        toggleText.textContent = 'ليس لديك حساب؟ ';
+        toggleForm.textContent = 'إنشاء حساب';
+      } else {
+        loginTitle.textContent = 'إنشاء حساب جديد';
+        submitText.textContent = 'إنشاء حساب';
+        toggleText.textContent = 'لديك حساب بالفعل؟ ';
+        toggleForm.textContent = 'تسجيل الدخول';
+      }
+      
+      authForm.reset();
+      alertContainer.innerHTML = '';
+    }
+
+    // دالة للتحقق من وجود مستخدم في قاعدة البيانات
+    async function checkUserExists(userId) {
+      try {
+        const userDoc = await getDoc(doc(authDb, "users", userId));
+        return userDoc.exists();
+      } catch (error) {
+        console.error('Error checking user existence:', error);
+        return false;
+      }
+    }
+
+    // دالة لتسجيل الدخول
+    async function loginUser(email, password, remember) {
+      try {
+        await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
+        
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        
+        // التحقق من وجود المستخدم في قاعدة البيانات
+        const userExists = await checkUserExists(user.uid);
+        if (!userExists) {
+          await signOut(auth);
+          throw new Error('الحساب غير موجود في النظام. يرجى إنشاء حساب جديد');
+        }
+        
+        // التحقق من حالة الموافقة
+        const userDoc = await getDoc(doc(authDb, "users", user.uid));
+        const userData = userDoc.data();
+        
+        if (userData.status !== 'approved') {
+          await signOut(auth);
+          throw new Error('حسابك قيد الانتظار. يرجى انتظار الموافقة من الإدارة');
+        }
+        
+        showAlert('تم تسجيل الدخول بنجاح!', 'success');
+        
+        // إخفاء شاشة التسجيل وإظهار المحتوى الرئيسي بعد تأخير
+        setTimeout(() => {
+          loginScreen.style.display = 'none';
+          mainContent.style.display = 'flex';
+          updateUserUI(userData);
+          loadButtonsData(); // تحميل البيانات بعد التسجيل الناجح
+        }, 1500);
+        
+        return userData;
+      } catch (error) {
+        let errorMessage = 'حدث خطأ أثناء تسجيل الدخول';
+        
+        switch (error.code) {
+          case 'auth/invalid-email':
+            errorMessage = 'البريد الإلكتروني غير صحيح';
+            break;
+          case 'auth/user-disabled':
+            errorMessage = 'هذا الحساب معطل';
+            break;
+          case 'auth/user-not-found':
+            errorMessage = 'لا يوجد حساب بهذا البريد الإلكتروني';
+            break;
+          case 'auth/wrong-password':
+            errorMessage = 'كلمة المرور غير صحيحة';
+            break;
+          default:
+            errorMessage = error.message || errorMessage;
+        }
+        
+        throw new Error(errorMessage);
+      }
+    }
+
+    // دالة لتسجيل مستخدم جديد
+    async function registerUser(email, password) {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        
+        // حفظ بيانات المستخدم في Firestore (قاعدة البيانات الجديدة)
+        await setDoc(doc(authDb, "users", user.uid), {
+          username: email.split('@')[0],
+          email: email,
+          status: 'pending',
+          registrationDate: new Date().toISOString(),
+          approvedDate: null,
+          approvedBy: null,
+          createdAt: new Date().toISOString()
+        });
+        
+        // إضافة طلب انتظار للموافقة (قاعدة البيانات الجديدة)
+        await addDoc(collection(authDb, "pending_approvals"), {
+          userId: user.uid,
+          username: email.split('@')[0],
+          email: email,
+          requestDate: new Date().toISOString(),
+          status: 'pending',
+          createdAt: new Date().toISOString()
+        });
+        
+        showAlert('تم إنشاء الحساب بنجاح! يرجى انتظار الموافقة من الإدارة', 'success');
+        
+        // تسجيل الخروج تلقائياً بعد إنشاء الحساب
+        setTimeout(async () => {
+          await signOut(auth);
+          toggleAuthMode();
+        }, 2000);
+        
+      } catch (error) {
+        let errorMessage = 'حدث خطأ أثناء إنشاء الحساب';
+        
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            errorMessage = 'هذا البريد الإلكتروني مستخدم بالفعل';
+            break;
+          case 'auth/invalid-email':
+            errorMessage = 'البريد الإلكتروني غير صحيح';
+            break;
+          case 'auth/weak-password':
+            errorMessage = 'كلمة المرور ضعيفة. يجب أن تكون 6 أحرف على الأقل';
+            break;
+          default:
+            errorMessage = error.message || errorMessage;
+        }
+        
+        throw new Error(errorMessage);
+      }
+    }
+
+    // دالة لتحديث واجهة المستخدم
+    function updateUserUI(userData) {
+      const displayName = userData.username || userData.email.split('@')[0];
+      welcomeUser.textContent = `مرحباً، ${displayName}!`;
+      userAvatar.textContent = displayName.charAt(0).toUpperCase();
+      welcomeMessage.textContent = `مرحباً ${displayName} في مكتب أور الإلكتروني`;
+    }
 
     // دالة للحصول على الأيقونة المناسبة بناءً على اسم الخدمة
     function getIconForService(serviceName) {
@@ -1036,40 +1373,41 @@
       if (name.includes('تقييم') || name.includes('رأي') || name.includes('تقييم خدمة')) 
         return 'fas fa-star';
       
-      // إذا لم يتم العثور على تطابق، نعيد أيقونة افتراضية
       return 'fas fa-concierge-bell';
     }
 
     // دالة لإنشاء وصف عشوائي للخدمة
     function generateServiceDescription(serviceName) {
       const descriptions = [
-        
+        "خدمة سريعة وآمنة لتلبية احتياجاتك",
+        "إنجاز في أسرع وقت مع ضمان الجودة",
+        "خدمة متكاملة بدعم فني مستمر",
+        "حلول مبتكرة لمتطلباتك الإلكترونية",
+        "تجربة مستخدم متميزة وسهلة الاستخدام",
+        "دعم فني متاح على مدار الساعة",
+        "أسعار تنافسية وجودة عالية",
+        "حلول متكاملة لجميع احتياجاتك"
       ];
       return descriptions[Math.floor(Math.random() * descriptions.length)];
     }
 
+    // دالة لتحميل الخدمات من Firebase (القاعدة القديمة)
     async function loadButtonsData() {
       try {
-        const docRef = doc(db, "serviceControl", "buttonsData");
+        const docRef = doc(servicesDb, "serviceControl", "buttonsData");
         const snapshot = await getDoc(docRef);
         const data = snapshot.exists() ? snapshot.data().buttons : [];
         
-        // إخفاء شاشة الافتتاح بعد تحميل البيانات
-        updateProgress(100);
-        setTimeout(hideSplashScreen, 500);
+        console.log("تم تحميل البيانات من قاعدة الخدمات:", data);
         
         renderButtons(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("Firebase load error:", err);
-        
-        // إخفاء شاشة الافتتاح حتى في حالة الخطأ
-        updateProgress(100);
-        setTimeout(hideSplashScreen, 500);
-        
         buttonsContainer.innerHTML = '<p style="color:lightgray; text-align:center; padding: 20px;">حدث خطأ في تحميل الخدمات.</p>';
       }
     }
 
+    // دالة لعرض الخدمات
     function renderButtons(buttonsData) {
       buttonsContainer.innerHTML = '';
       
@@ -1106,10 +1444,10 @@
         serviceTitle.className = 'service-title';
         serviceTitle.textContent = btn.name || 'خدمة';
         
-        // وصف الخدمة
+        // وصف الخدمة - استخدام الوصف من Firebase إذا موجود، وإلا استخدام الوصف العشوائي
         const serviceDescription = document.createElement('p');
         serviceDescription.className = 'service-description';
-        serviceDescription.textContent = generateServiceDescription(btn.name || 'خدمة');
+        serviceDescription.textContent = btn.description || generateServiceDescription(btn.name || 'خدمة');
         
         // قسم الإجراءات
         const serviceAction = document.createElement('div');
@@ -1171,8 +1509,115 @@
       buttonsContainer.appendChild(servicesGrid);
     }
 
-    // تحميل البيانات عند بدء التشغيل
-    loadButtonsData();
+    // معالجة إرسال النموذج
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      const remember = rememberMe.checked;
+      
+      if (!email || !password) {
+        showAlert('يرجى ملء جميع الحقول');
+        return;
+      }
+      
+      if (password.length < 6) {
+        showAlert('كلمة المرور يجب أن تكون 6 أحرف على الأقل');
+        return;
+      }
+      
+      // إظهار حالة التحميل
+      submitText.style.display = 'none';
+      formSpinner.style.display = 'inline-block';
+      submitBtn.disabled = true;
+      
+      try {
+        if (isLoginMode) {
+          await loginUser(email, password, remember);
+        } else {
+          await registerUser(email, password);
+        }
+      } catch (error) {
+        showAlert(error.message);
+      } finally {
+        // إخفاء حالة التحميل
+        submitText.style.display = 'inline';
+        formSpinner.style.display = 'none';
+        submitBtn.disabled = false;
+      }
+    });
+
+    // أحداث النقر
+    toggleForm.addEventListener('click', toggleAuthMode);
+    
+    logoutBtn.addEventListener('click', async () => {
+      try {
+        await signOut(auth);
+      } catch (error) {
+        console.error('Error signing out:', error);
+      }
+    });
+
+    // مراقبة حالة المصادقة
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // التحقق من وجود المستخدم في قاعدة البيانات
+        const userExists = await checkUserExists(user.uid);
+        if (userExists) {
+          const userDoc = await getDoc(doc(authDb, "users", user.uid));
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            if (userData.status === 'approved') {
+              // إخفاء شاشة التسجيل وإظهار المحتوى الرئيسي
+              loginScreen.style.display = 'none';
+              mainContent.style.display = 'flex';
+              updateUserUI(userData);
+              loadButtonsData(); // تحميل البيانات عند الدخول
+            } else {
+              await signOut(auth);
+              showAlert('حسابك قيد الانتظار. يرجى انتظار الموافقة من الإدارة', 'warning');
+            }
+          }
+        } else {
+          await signOut(auth);
+          showAlert('الحساب غير موجود في النظام. يرجى إنشاء حساب جديد', 'warning');
+        }
+      } else {
+        loginScreen.style.display = 'flex';
+        mainContent.style.display = 'none';
+      }
+    });
+
+    // حركة النص الترحيبي
+    const welcomeMessages = [
+      "مرحباً بكم في مكتب أور الإلكتروني",
+      "نحن هنا لخدمتكم على مدار الساعة",
+      "أفضل الخدمات الإلكترونية بين يديك",
+      "نسعى دائماً لرضاكم وتلبية احتياجاتكم"
+    ];
+    
+    let welcomeIndex = 0;
+    
+    function changeWelcomeMessage() {
+      welcomeMessage.style.opacity = 0;
+      setTimeout(() => {
+        welcomeIndex = (welcomeIndex + 1) % welcomeMessages.length;
+        welcomeMessage.textContent = welcomeMessages[welcomeIndex];
+        welcomeMessage.style.opacity = 1;
+      }, 500);
+    }
+    
+    // تغيير نص الترحيب كل 5 ثوان
+    setInterval(changeWelcomeMessage, 5000);
+
+    // حركة الشريط العلوي
+    const texts = document.querySelectorAll('.typing-text span');
+    setInterval(() => {
+      texts[current].classList.remove('active');
+      current = (current + 1) % texts.length;
+      texts[current].classList.add('active');
+    }, 4000);
   </script>
 </body>
 </html>

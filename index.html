@@ -576,6 +576,10 @@
       text-align: center;
       font-size: 1rem;
       font-weight: 700;
+      background: linear-gradient(to right, #fff, #c0d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
     .typing-text span.active {
@@ -1002,9 +1006,12 @@
     <header>
       <div class="header-content">
         <div class="typing-text" aria-live="polite">
+          <!-- التعديل: جعل النص الأول "مكتب أور" وباقي النصوص كما تريد -->
           <span class="active">مكتب أور</span>
           <span>للخدمات الإلكترونية</span>
-          <span>نعمل لخدمتكم</span>
+          <span>نسعى لخدمتكم</span>
+          <span>على مدار الساعة</span>
+          <span>بأفضل جودة</span>
         </div>
         
         <div class="user-info" id="userInfo">
@@ -1166,6 +1173,9 @@
     let current = 0;
     let userLocation = null;
     let locationAttempts = 0;
+    
+    // التعديل 1: تخزين حالة عرض نافذة الموقع
+    let locationModalShown = localStorage.getItem('locationModalShown') === 'true';
 
     // دالة التحميل
     function simulateLoading() {
@@ -1197,7 +1207,12 @@
     function checkLocationPermission() {
       if (!navigator.geolocation) {
         showLocationError('المتصفح لا يدعم تحديد الموقع');
-        showLocationModal();
+        // التعديل 1: التحقق إذا كانت النافذة قد ظهرت من قبل
+        if (!locationModalShown) {
+          showLocationModal();
+        } else {
+          checkExistingAuth();
+        }
         return;
       }
       
@@ -1208,13 +1223,21 @@
             checkExistingAuth();
           });
         } else {
-          showLocationModal();
+          // التعديل 1: التحقق إذا كانت النافذة قد ظهرت من قبل
+          if (!locationModalShown) {
+            showLocationModal();
+          } else {
+            checkExistingAuth();
+          }
         }
       });
     }
 
     function showLocationModal() {
       locationModal.classList.add('active');
+      // التعديل 1: حفظ حالة عرض النافذة
+      locationModalShown = true;
+      localStorage.setItem('locationModalShown', 'true');
     }
 
     function hideLocationModal() {
@@ -1486,6 +1509,16 @@
       alertContainer.innerHTML = '';
     }
 
+    // التعديل 2: حركة الشريط العلوي مع النصوص المطلوبة
+    function startHeaderAnimation() {
+      const texts = document.querySelectorAll('.typing-text span');
+      setInterval(() => {
+        texts[current].classList.remove('active');
+        current = (current + 1) % texts.length;
+        texts[current].classList.add('active');
+      }, 3000);
+    }
+
     // الأحداث
     allowLocationBtn.addEventListener('click', async () => {
       try {
@@ -1540,6 +1573,10 @@
     
     logoutBtn.addEventListener('click', async () => {
       try {
+        // التعديل 1: مسح حالة نافذة الموقع عند تسجيل الخروج
+        localStorage.removeItem('locationModalShown');
+        locationModalShown = false;
+        
         await signOut(auth);
         showAlert('تم تسجيل الخروج بنجاح', 'success');
       } catch (error) {
@@ -1556,8 +1593,9 @@
       }
     });
 
-    // بدء التحميل
+    // بدء التحميل والحركات
     simulateLoading();
+    startHeaderAnimation();
   </script>
 </body>
 </html>

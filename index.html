@@ -29,7 +29,7 @@
       --gray: #6b7280;
       --card-bg: rgba(255, 255, 255, 0.08);
       --card-border: rgba(255, 255, 255, 0.12);
-      --header-height: 70px;
+      --header-height: 60px;
     }
     
     * { 
@@ -60,69 +60,27 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+      transition: opacity 0.8s ease;
     }
     
     .splash-screen.hidden {
       opacity: 0;
-      visibility: hidden;
+      pointer-events: none;
     }
     
     .logo-container {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
     
     .logo {
-      font-size: 4.5rem;
+      font-size: 3.5rem;
       font-weight: 800;
       background: linear-gradient(90deg, #4cc9f0, #4361ee, #7209b7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 20px;
-      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .typing-text-splash {
-      font-size: 2.2rem;
-      font-weight: 600;
-      height: 60px;
-      overflow: hidden;
-      position: relative;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .typing-text-splash span {
-      display: inline-block;
-      overflow: hidden;
-      animation: typing 2.5s steps(30, end) forwards, blink 0.7s infinite;
-      white-space: nowrap;
-      border-right: 3px solid #4cc9f0;
-      width: 0;
-    }
-    
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: #4cc9f0 }
-    }
-    
-    .version {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.7);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 8px 16px;
-      border-radius: 20px;
+      margin-bottom: 15px;
     }
     
     .loading-bar {
@@ -131,7 +89,7 @@
       background: rgba(255, 255, 255, 0.2);
       border-radius: 2px;
       overflow: hidden;
-      margin-top: 20px;
+      margin: 15px 0;
     }
     
     .loading-progress {
@@ -143,24 +101,23 @@
     }
     
     .loading-text {
-      margin-top: 10px;
       font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.7);
     }
     
-    /* نافذة الموقع المنبثقة */
+    /* نافذة الموقع المنبثقة - مصغرة للهواتف */
     .location-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 999;
-      padding: 20px;
+      padding: 15px;
       backdrop-filter: blur(10px);
     }
     
@@ -175,80 +132,61 @@
     }
     
     .modal-content {
-      background: linear-gradient(135deg, rgba(26, 36, 61, 0.95), rgba(13, 27, 42, 0.98));
-      border-radius: 24px;
-      padding: 30px;
+      background: linear-gradient(135deg, rgba(26, 36, 61, 0.98), rgba(13, 27, 42, 0.95));
+      border-radius: 20px;
+      padding: 25px 20px;
       width: 100%;
-      max-width: 500px;
+      max-width: 400px;
+      max-height: 85vh;
+      overflow-y: auto;
       border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       text-align: center;
       position: relative;
-      overflow: hidden;
-    }
-    
-    .modal-content::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(76, 201, 240, 0.1) 0%, transparent 70%);
-      animation: pulse 6s infinite linear;
     }
     
     .location-icon {
-      font-size: 4rem;
+      font-size: 3rem;
       color: var(--accent);
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 2;
+      margin-bottom: 15px;
       animation: bounce 2s infinite;
     }
     
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
+      40% { transform: translateY(-8px); }
+      60% { transform: translateY(-4px); }
     }
     
     .modal-title {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
       color: white;
       font-weight: 700;
-      position: relative;
-      z-index: 2;
-      line-height: 1.4;
+      line-height: 1.3;
     }
     
     .modal-subtitle {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 25px;
-      position: relative;
-      z-index: 2;
-      line-height: 1.6;
+      margin-bottom: 20px;
+      line-height: 1.4;
     }
     
     .location-features {
       background: rgba(76, 201, 240, 0.1);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 25px;
-      text-align: right;
-      position: relative;
-      z-index: 2;
-      border: 1px solid rgba(76, 201, 240, 0.3);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(76, 201, 240, 0.2);
     }
     
     .location-feature {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      padding: 8px 0;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
     }
     
     .location-feature:last-child {
@@ -257,115 +195,117 @@
     
     .location-feature i {
       color: var(--success);
-      font-size: 1.3rem;
+      font-size: 1rem;
       flex-shrink: 0;
     }
     
     .location-feature span {
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 0.95rem;
-      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
       text-align: right;
       flex: 1;
+      line-height: 1.3;
     }
     
     .location-importance {
       background: rgba(250, 204, 21, 0.1);
-      border: 1px solid rgba(250, 204, 21, 0.3);
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 25px;
-      position: relative;
-      z-index: 2;
+      border: 1px solid rgba(250, 204, 21, 0.2);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
     }
     
     .importance-title {
       color: var(--warning);
       font-weight: 600;
-      margin-bottom: 8px;
-      font-size: 1rem;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
     }
     
     .importance-text {
       color: rgba(255, 255, 255, 0.9);
-      font-size: 0.9rem;
-      line-height: 1.5;
-      text-align: right;
+      line-height: 1.4;
     }
     
     .modal-buttons {
       display: flex;
-      gap: 15px;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 15px;
     }
     
     .btn-primary {
-      padding: 16px 32px;
+      padding: 14px 20px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
+      border-radius: 10px;
+      font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-family: 'Cairo', sans-serif;
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex: 1;
       justify-content: center;
-      min-width: 200px;
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
     }
     
     .btn-secondary {
-      padding: 16px 32px;
+      padding: 12px 20px;
       background: rgba(255, 255, 255, 0.1);
       color: white;
       border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      font-size: 1.1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-family: 'Cairo', sans-serif;
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex: 1;
       justify-content: center;
-      min-width: 200px;
+      gap: 8px;
     }
     
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.6);
+    .btn-primary:active {
+      transform: scale(0.98);
     }
     
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-1px);
+    .btn-secondary:active {
+      transform: scale(0.98);
     }
     
     .btn-primary:disabled {
       opacity: 0.6;
       cursor: not-allowed;
-      transform: none;
+    }
+    
+    .mandatory-notice {
+      background: rgba(248, 113, 113, 0.1);
+      border: 1px solid var(--danger);
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 15px;
+    }
+    
+    .mandatory-text {
+      color: var(--danger);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
     
     .location-error {
       background: rgba(248, 113, 113, 0.1);
       border: 1px solid var(--danger);
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 20px;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 15px;
       display: none;
-      position: relative;
-      z-index: 2;
     }
     
     .location-error.active {
@@ -380,34 +320,32 @@
     
     .error-message {
       color: var(--danger);
-      font-size: 0.9rem;
-      line-height: 1.5;
+      font-size: 0.8rem;
+      text-align: center;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      gap: 8px;
     }
     
     .location-guide {
       background: rgba(76, 201, 240, 0.1);
       border: 1px solid var(--accent);
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 20px;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 15px;
       display: none;
-      position: relative;
-      z-index: 2;
     }
     
     .location-guide.active {
       display: block;
-      animation: slideDown 0.3s ease;
     }
     
     .guide-title {
       color: var(--accent);
       font-weight: 600;
-      margin-bottom: 10px;
-      font-size: 1rem;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
     }
     
     .guide-steps {
@@ -417,11 +355,11 @@
     }
     
     .guide-step {
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      padding: 5px 0;
+      gap: 8px;
+      font-size: 0.8rem;
     }
     
     .guide-step i {
@@ -430,34 +368,6 @@
       flex-shrink: 0;
     }
     
-    .guide-step span {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.85rem;
-      line-height: 1.4;
-      flex: 1;
-    }
-    
-    .mandatory-notice {
-      background: rgba(248, 113, 113, 0.1);
-      border: 1px solid var(--danger);
-      border-radius: 8px;
-      padding: 12px;
-      margin-top: 15px;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .mandatory-text {
-      color: var(--danger);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
     /* شاشة تسجيل الدخول */
     .login-screen {
       position: fixed;
@@ -470,23 +380,22 @@
       justify-content: center;
       align-items: center;
       z-index: 998;
-      padding: 20px;
+      padding: 15px;
     }
     
     .login-container {
       background: rgba(26, 36, 61, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 40px;
+      border-radius: 20px;
+      padding: 30px 25px;
       width: 100%;
-      max-width: 450px;
+      max-width: 400px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       text-align: center;
     }
     
     .login-logo {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       font-weight: 800;
       background: linear-gradient(90deg, #4cc9f0, #4361ee, #7209b7);
       -webkit-background-clip: text;
@@ -496,33 +405,34 @@
     }
     
     .login-title {
-      font-size: 1.8rem;
-      margin-bottom: 30px;
+      font-size: 1.4rem;
+      margin-bottom: 25px;
       color: white;
       font-weight: 700;
     }
     
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-align: right;
     }
     
     .form-group label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: 600;
       color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
     }
     
     .form-control {
       width: 100%;
-      padding: 15px;
-      border-radius: 12px;
+      padding: 12px 15px;
+      border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       background: rgba(255, 255, 255, 0.05);
       color: white;
       font-family: 'Cairo', sans-serif;
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
     }
     
@@ -535,54 +445,51 @@
     .remember-me {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 25px;
+      gap: 8px;
+      margin-bottom: 20px;
       justify-content: flex-end;
-    }
-    
-    .remember-me input {
-      width: 18px;
-      height: 18px;
+      font-size: 0.9rem;
     }
     
     .submit-btn {
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
+      border-radius: 10px;
+      font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-family: 'Cairo', sans-serif;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
     
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+    .submit-btn:active {
+      transform: scale(0.98);
     }
     
     .submit-btn:disabled {
       opacity: 0.6;
       cursor: not-allowed;
-      transform: none;
     }
     
     .toggle-form {
       color: var(--accent);
       cursor: pointer;
-      text-decoration: underline;
       font-weight: 600;
+      font-size: 0.9rem;
     }
     
     .alert {
-      padding: 12px 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      font-size: 0.9rem;
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 0.8rem;
       text-align: right;
     }
     
@@ -605,14 +512,12 @@
     }
     
     .spinner {
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-left: 3px solid white;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-left: 2px solid white;
       border-radius: 50%;
       animation: spin 1s linear infinite;
-      display: inline-block;
-      margin-left: 10px;
     }
     
     @keyframes spin {
@@ -623,26 +528,24 @@
     /* المحتوى الرئيسي */
     .main-content {
       display: none;
-      height: 100%;
+      height: 100vh;
       flex-direction: column;
     }
     
-    /* باقي الستايلات تبقى كما هي */
     header {
-      position: fixed; 
-      top: 0; 
-      left: 0; 
+      position: fixed;
+      top: 0;
+      left: 0;
       right: 0;
       height: var(--header-height);
       background: rgba(26, 36, 61, 0.95);
       backdrop-filter: blur(12px);
-      display: flex; 
-      align-items: center; 
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
       padding: 0 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .header-content {
@@ -654,344 +557,266 @@
     }
     
     .typing-text {
-      position: relative; 
-      min-width: 120px; 
-      height: 35px; 
+      position: relative;
+      min-width: 100px;
+      height: 30px;
       overflow: hidden;
       text-align: center;
       flex: 1;
     }
     
     .typing-text span {
-      position: absolute; 
-      top: 0; 
+      position: absolute;
+      top: 0;
       left: 0;
-      opacity: 0; 
-      transform: translateY(15px);
+      opacity: 0;
+      transform: translateY(10px);
       transition: opacity 0.6s ease, transform 0.6s ease;
-      width: 100%; 
+      width: 100%;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
-      background: linear-gradient(to right, #fff, #c0d4ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 2px 10px rgba(76, 201, 240, 0.3);
     }
     
     .typing-text span.active {
-      opacity: 1; 
-      transform: translateY(0); 
-      z-index: 1;
+      opacity: 1;
+      transform: translateY(0);
     }
     
     .user-info {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-shrink: 0;
     }
     
     .welcome-user {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       background: linear-gradient(to right, #4cc9f0, #4361ee);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 100px;
+      max-width: 80px;
     }
     
     .user-avatar {
-      width: 35px;
-      height: 35px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 1rem;
-      flex-shrink: 0;
+      font-size: 0.9rem;
     }
     
     .logout-btn {
       background: rgba(248, 113, 113, 0.2);
       color: var(--danger);
       border: 1px solid var(--danger);
-      padding: 6px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
       cursor: pointer;
       font-family: 'Cairo', sans-serif;
       font-weight: 600;
       transition: all 0.3s ease;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       white-space: nowrap;
-      flex-shrink: 0;
-    }
-    
-    .logout-btn:hover {
-      background: rgba(248, 113, 113, 0.3);
-      transform: translateY(-1px);
     }
     
     main {
       margin-top: var(--header-height);
       flex: 1;
       overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    
-    .hero {
-      background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(114, 9, 183, 0.2));
-      border-radius: 24px;
-      padding: 40px 30px;
-      text-align: center;
-      margin-bottom: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      position: relative;
-      overflow: hidden;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      background: linear-gradient(to right, #fff, #a0bfff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
-      z-index: 1;
-      line-height: 1.3;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    .hero p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.3rem;
-      line-height: 1.7;
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      font-weight: 400;
+      padding: 15px;
     }
     
     .welcome-text {
-      position: relative;
       text-align: center;
-      margin-bottom: 30px;
-      min-height: 80px;
+      margin-bottom: 20px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
     .welcome-message {
-      font-size: 2.2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       background: linear-gradient(90deg, #4cc9f0, #4361ee, #7209b7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      position: relative;
-      display: inline-block;
-      padding: 0 20px;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(114, 9, 183, 0.2));
+      border-radius: 15px;
+      padding: 25px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #fff, #a0bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    
+    .features-section {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      text-align: center;
+      color: white;
+      font-weight: 700;
     }
     
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
+      gap: 15px;
+      margin-bottom: 20px;
     }
     
     .service-card {
       background: var(--card-bg);
-      border-radius: 18px;
-      padding: 20px;
+      border-radius: 12px;
+      padding: 15px;
       border: 1px solid var(--card-border);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
       transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
     
-    .service-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-      border-color: rgba(76, 201, 240, 0.4);
+    .service-card:active {
+      transform: scale(0.98);
     }
     
     .service-icon {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 16px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 15px;
-      font-size: 1.6rem;
-      box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
-      transition: all 0.3s ease;
-    }
-    
-    .service-card:hover .service-icon {
-      transform: scale(1.05) rotate(3deg);
-      box-shadow: 0 10px 20px rgba(67, 97, 238, 0.5);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
     }
     
     .service-title {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: white;
     }
     
     .service-description {
       color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-      line-height: 1.5;
-      margin-bottom: 15px;
-      flex-grow: 1;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin-bottom: 12px;
     }
     
     .service-action {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: auto;
     }
     
     .service-btn {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border: none;
-      padding: 8px 16px;
-      border-radius: 12px;
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-    }
-    
-    .service-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
     }
     
     .service-status {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: rgba(255, 255, 255, 0.8);
     }
     
     .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--success);
-      box-shadow: 0 0 8px var(--success);
-      animation: pulse-dot 2s infinite;
-    }
-    
-    .features-section {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 24px;
-      padding: 30px 25px;
-      margin-bottom: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-    
-    .section-title {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      text-align: center;
-      color: white;
-      font-weight: 700;
     }
     
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      gap: 15px;
     }
     
     .feature-item {
       display: flex;
       align-items: flex-start;
-      gap: 15px;
-      padding: 18px;
-      border-radius: 14px;
-      transition: all 0.3s ease;
+      gap: 12px;
+      padding: 15px;
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.03);
     }
     
-    .feature-item:hover {
-      background: rgba(255, 255, 255, 0.06);
-      transform: translateY(-3px);
-    }
-    
     .feature-icon {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       background: rgba(76, 201, 240, 0.15);
-      border-radius: 14px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       color: var(--accent);
       flex-shrink: 0;
     }
     
     .feature-content h3 {
-      font-size: 1.1rem;
-      margin-bottom: 6px;
+      font-size: 1rem;
+      margin-bottom: 5px;
       color: white;
       font-weight: 600;
     }
     
     .feature-content p {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.8);
-      line-height: 1.5;
+      line-height: 1.4;
     }
     
     footer {
       text-align: center;
-      padding: 25px;
-      font-size: 0.9rem;
+      padding: 20px;
+      font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.7);
       background: rgba(0, 0, 0, 0.2);
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      margin-top: auto;
     }
     
     .loading {
@@ -1003,74 +828,42 @@
       color: rgba(255, 255, 255, 0.7);
     }
     
-    /* Responsive Design - محسّن أكثر للهواتف */
-    @media screen and (max-width: 768px) {
-      .modal-content {
-        padding: 25px 20px;
-        margin: 10px;
-      }
-      
-      .modal-title {
-        font-size: 1.5rem;
-        line-height: 1.3;
-      }
-      
-      .modal-subtitle {
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-      
-      .location-feature span {
-        font-size: 0.9rem;
-      }
-      
-      .modal-buttons {
-        flex-direction: column;
-      }
-      
-      .btn-primary, .btn-secondary {
-        min-width: 100%;
-        padding: 14px 20px;
-      }
-      
-      .location-features {
-        padding: 15px;
-      }
-      
-      .location-feature {
-        gap: 10px;
-        margin-bottom: 10px;
-      }
+    /* تحسين التمرير */
+    .modal-content::-webkit-scrollbar {
+      width: 4px;
     }
     
-    @media screen and (max-width: 480px) {
+    .modal-content::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .modal-content::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* تحسينات للشاشات الصغيرة */
+    @media (max-width: 360px) {
       .modal-content {
         padding: 20px 15px;
       }
       
       .modal-title {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
       
-      .modal-subtitle {
-        font-size: 0.95rem;
-      }
-      
-      .location-icon {
-        font-size: 3rem;
-      }
-      
-      .location-feature span {
-        font-size: 0.85rem;
-      }
-      
-      .guide-step span {
+      .location-feature {
         font-size: 0.8rem;
       }
       
-      .mandatory-text {
-        font-size: 0.8rem;
+      .welcome-user {
+        display: none;
       }
+    }
+    
+    /* منع التكبير على الهواتف */
+    input, select, textarea {
+      font-size: 16px !important;
     }
   </style>
 </head>
@@ -1080,15 +873,11 @@
   <div class="splash-screen" id="splashScreen">
     <div class="logo-container">
       <div class="logo">أور</div>
-      <div class="typing-text-splash">
-        <span id="typingText">مكتب أور للخدمات الإلكترونية</span>
-      </div>
     </div>
     <div class="loading-bar">
       <div class="loading-progress" id="loadingProgress"></div>
     </div>
     <div class="loading-text" id="loadingText">جاري التحميل...</div>
-    <div class="version">الإصدار 2.4</div>
   </div>
 
   <!-- نافذة طلب إذن الموقع -->
@@ -1098,69 +887,65 @@
         <i class="fas fa-map-marker-alt"></i>
       </div>
       
-      <h1 class="modal-title">مشاركة الموقع مطلوبة للتسجيل</h1>
+      <h1 class="modal-title">مشاركة الموقع مطلوبة</h1>
       
       <p class="modal-subtitle">
-        نحتاج إلى تحديد موقعك الجغرافي لتقديم أفضل خدمة ممكنة مخصصة لمنطقتك
+        نحتاج إلى تحديد موقعك الجغرافي لتقديم أفضل خدمة مخصصة
       </p>
       
       <div class="location-features">
         <div class="location-feature">
           <i class="fas fa-map-pin"></i>
-          <span>تحديد أقرب مكاتب الخدمة إليك وتوفير الوقت والجهد</span>
+          <span>تحديد أقرب مكاتب الخدمة إليك</span>
         </div>
         <div class="location-feature">
           <i class="fas fa-shield-alt"></i>
-          <span>تعزيز أمان حسابك وحماية معاملاتك من الاحتيال</span>
+          <span>تعزيز أمان حسابك وحمايته</span>
         </div>
         <div class="location-feature">
           <i class="fas fa-bolt"></i>
-          <span>تقديم خدمات أسرع ومخصصة حسب موقعك الجغرافي</span>
-        </div>
-        <div class="location-feature">
-          <i class="fas fa-headset"></i>
-          <span>دعم فني أفضل من خلال معرفة منطقتك ومدينتك</span>
+          <span>خدمات أسرع ومخصصة لموقعك</span>
         </div>
       </div>
       
       <div class="location-importance">
-        <div class="importance-title">📋 لماذا الموقع إجباري؟</div>
+        <div class="importance-title">لماذا الموقع إجباري؟</div>
         <div class="importance-text">
-          نظامنا مصمم لتقديم خدمات مخصصة حسب الموقع الجغرافي. بدون تحديد الموقع، لن نتمكن من تقديم الخدمات بشكل صحيح أو حماية حسابك بشكل كامل.
+          نظامنا مصمم لتقديم خدمات مخصصة حسب الموقع الجغرافي. بدون تحديد الموقع، لن نتمكن من تقديم الخدمات بشكل صحيح.
         </div>
       </div>
       
       <div class="modal-buttons">
         <button class="btn-primary" id="allowLocationBtn">
           <i class="fas fa-check-circle"></i>
-          <span>موافقة ومشاركة الموقع</span>
+          موافقة على المشاركة
         </button>
         <button class="btn-secondary" id="openSettingsBtn">
           <i class="fas fa-cog"></i>
-          <span>فتح إعدادات الموقع</span>
+          فتح إعدادات الموقع
         </button>
       </div>
       
       <div class="mandatory-notice">
         <div class="mandatory-text">
           <i class="fas fa-exclamation-triangle"></i>
-          <span>مشاركة الموقع إلزامية لإنشاء حساب جديد في النظام</span>
+          مشاركة الموقع إلزامية لإنشاء حساب جديد
         </div>
       </div>
       
       <div class="location-error" id="locationError">
-        <div class="error-message">
+        <div class="error-message" id="errorMessage">
           <i class="fas fa-exclamation-circle"></i>
-          <span id="errorMessage">حدث خطأ في الحصول على الموقع. يرجى المحاولة مرة أخرى.</span>
+          حدث خطأ في الحصول على الموقع
         </div>
       </div>
       
       <div class="location-guide" id="locationGuide">
-        <div class="guide-title">📱 كيفية تمكين الموقع:</div>
+        <div class="guide-title">كيفية تمكين الموقع:</div>
         <ul class="guide-steps">
           <li class="guide-step">
             <i class="fas fa-mobile-alt"></i>
-            <span>في المتصفح: انقر على أيقونة القفل بجانب عنوان الموقع</span>
+            <span>في المتصفح: انقر على أيقونة القفل بجانب العنوان</span>
           </li>
           <li class="guide-step">
             <i class="fas fa-map-marker"></i>
@@ -1169,10 +954,6 @@
           <li class="guide-step">
             <i class="fas fa-check"></i>
             <span>غير الإعداد إلى "السماح" أو "Allow"</span>
-          </li>
-          <li class="guide-step">
-            <i class="fas fa-redo"></i>
-            <span>أعد تحميل الصفحة بعد التمكين</span>
           </li>
         </ul>
       </div>
@@ -1220,37 +1001,33 @@
   <div class="main-content" id="mainContent">
     <header>
       <div class="header-content">
-        <div class="typing-text" aria-live="polite" aria-atomic="true">
+        <div class="typing-text" aria-live="polite">
           <span class="active">مكتب أور</span>
           <span>للخدمات الإلكترونية</span>
-          <span>نحن نعمل لخدمتكم</span>
-          <span>24 ساعة</span>
-          <span>على مدار الأسبوع</span>
+          <span>نعمل لخدمتكم</span>
         </div>
         
         <div class="user-info" id="userInfo">
-          <div class="welcome-user" id="welcomeUser">مرحباً، أحمد!</div>
+          <div class="welcome-user" id="welcomeUser">مرحباً!</div>
           <div class="user-avatar" id="userAvatar">أ</div>
-          <button class="logout-btn" id="logoutBtn" title="تسجيل الخروج">
+          <button class="logout-btn" id="logoutBtn">
             <i class="fas fa-sign-out-alt"></i>
-            <span class="logout-text">خروج</span>
+            <span>خروج</span>
           </button>
         </div>
       </div>
     </header>
 
     <main>
-      <!-- نص التحية المتحرك -->
       <div class="welcome-text">
-        <div class="welcome-message" id="welcomeMessage">مرحباً بكم في مكتب أور الإلكتروني</div>
+        <div class="welcome-message" id="welcomeMessage">مرحباً في مكتب أور</div>
       </div>
       
       <section class="hero">
         <h1>مكتب أور للخدمات الإلكترونية</h1>
-        <p>نقدم لكم مجموعة متكاملة من الخدمات الإلكترونية بأعلى معايير الجودة والاحترافية</p>
+        <p>نقدم لكم مجموعة متكاملة من الخدمات الإلكترونية بأعلى معايير الجودة</p>
       </section>
       
-      <!-- قسم الخدمات -->
       <div class="features-section">
         <h2 class="section-title">خدماتنا</h2>
         <div id="buttons-container">
@@ -1261,9 +1038,8 @@
         </div>
       </div>
       
-      <!-- قسم الميزات -->
       <div class="features-section">
-        <h2 class="section-title">مميزات مكتب أور</h2>
+        <h2 class="section-title">مميزاتنا</h2>
         <div class="features-grid">
           <div class="feature-item">
             <div class="feature-icon">
@@ -1271,7 +1047,7 @@
             </div>
             <div class="feature-content">
               <h3>أمان وحماية</h3>
-              <p>نضمن حماية بياناتك ومعاملاتك بأعلى معايير الأمان الإلكتروني</p>
+              <p>نضمن حماية بياناتك بأعلى معايير الأمان</p>
             </div>
           </div>
           <div class="feature-item">
@@ -1280,7 +1056,7 @@
             </div>
             <div class="feature-content">
               <h3>خدمة 24/7</h3>
-              <p>خدمة عملاء متاحة على مدار الساعة طوال أيام الأسبوع</p>
+              <p>خدمة عملاء متاحة على مدار الساعة</p>
             </div>
           </div>
           <div class="feature-item">
@@ -1288,17 +1064,8 @@
               <i class="fas fa-bolt"></i>
             </div>
             <div class="feature-content">
-              <h3>سرعة في الأداء</h3>
-              <p>إنجاز الخدمات في أسرع وقت ممكن مع الحفاظ على الجودة</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-hand-holding-usd"></i>
-            </div>
-            <div class="feature-content">
-              <h3>أسعار تنافسية</h3>
-              <p>أسعارنا مناسبة للجميع مع عروض وتخفيضات مستمرة</p>
+              <h3>سرعة الأداء</h3>
+              <p>إنجاز الخدمات في أسرع وقت</p>
             </div>
           </div>
         </div>
@@ -1400,61 +1167,60 @@
     let userLocation = null;
     let locationAttempts = 0;
 
-    // دالة لتحديث شريط التقدم
+    // دالة التحميل
+    function simulateLoading() {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          updateProgress(progress);
+          loadingText.textContent = "جاهز!";
+          setTimeout(() => {
+            splashScreen.classList.add('hidden');
+            checkLocationPermission();
+          }, 500);
+        } else {
+          updateProgress(progress);
+          if (progress >= 30) loadingText.textContent = "جاري تحميل البيانات...";
+          if (progress >= 70) loadingText.textContent = "جاري تهيئة النظام...";
+        }
+      }, 300);
+    }
+
     function updateProgress(percent) {
       loadingProgress.style.width = percent + '%';
     }
 
-    // دالة محسنة لإخفاء شاشة الافتتاح
-    function hideSplashScreen() {
-      splashScreen.classList.add('hidden');
-      setTimeout(() => {
-        splashScreen.style.display = 'none';
-        // التحقق من إذن الموقع أولاً
-        checkLocationPermission();
-      }, 800);
-    }
-
-    // التحقق من إذن الموقع
+    // نظام الموقع
     function checkLocationPermission() {
       if (!navigator.geolocation) {
-        showLocationError('المتصفح لا يدعم تحديد الموقع. يرجى استخدام متصفح حديث.');
+        showLocationError('المتصفح لا يدعم تحديد الموقع');
         showLocationModal();
         return;
       }
       
-      // التحقق من الإذن الحالي
       navigator.permissions.query({name: 'geolocation'}).then((result) => {
         if (result.state === 'granted') {
-          // الإذن ممنوح مسبقاً
           getUserLocation().then(location => {
             userLocation = location;
             checkExistingAuth();
-          }).catch(error => {
-            showLocationModal();
           });
-        } else if (result.state === 'prompt') {
-          // يحتاج إلى طلب الإذن
-          showLocationModal();
         } else {
-          // الإذن مرفوض
           showLocationModal();
-          locationGuide.classList.add('active');
         }
       });
     }
 
-    // عرض نافذة الموقع
     function showLocationModal() {
       locationModal.classList.add('active');
     }
 
-    // إخفاء نافذة الموقع
     function hideLocationModal() {
       locationModal.classList.remove('active');
     }
 
-    // إظهار خطأ الموقع
     function showLocationError(message) {
       errorMessage.textContent = message;
       locationError.classList.add('active');
@@ -1465,58 +1231,37 @@
       }
     }
 
-    // إخفاء خطأ الموقع
-    function hideLocationError() {
-      locationError.classList.remove('active');
-    }
-
-    // دالة للحصول على الموقع الحقيقي
     async function getUserLocation() {
       return new Promise((resolve, reject) => {
-        if (!navigator.geolocation) {
-          reject(new Error('المتصفح لا يدعم تحديد الموقع'));
-          return;
-        }
-
         const options = {
           enableHighAccuracy: true,
-          timeout: 15000,
+          timeout: 10000,
           maximumAge: 60000
         };
 
         navigator.geolocation.getCurrentPosition(
           async (position) => {
-            try {
-              const { latitude, longitude, accuracy } = position.coords;
-              
-              // استخدام خدمة reverse geocoding للحصول على اسم المدينة
-              const cityName = await getCityNameFromCoordinates(latitude, longitude);
-              
-              const locationData = {
-                latitude,
-                longitude,
-                accuracy,
-                city: cityName,
-                timestamp: new Date().toISOString(),
-                source: 'gps'
-              };
-              
-              resolve(locationData);
-            } catch (error) {
-              reject(error);
-            }
+            const { latitude, longitude } = position.coords;
+            const cityName = await getCityNameFromCoordinates(latitude, longitude);
+            
+            resolve({
+              latitude,
+              longitude,
+              city: cityName,
+              timestamp: new Date().toISOString()
+            });
           },
           (error) => {
             let errorMsg = 'حدث خطأ في الحصول على الموقع';
             switch (error.code) {
               case error.PERMISSION_DENIED:
-                errorMsg = 'تم رفض إذن الموقع. يرجى السماح بالوصول إلى الموقع للمتابعة.';
+                errorMsg = 'تم رفض إذن الموقع. يرجى السماح بالوصول إلى الموقع';
                 break;
               case error.POSITION_UNAVAILABLE:
-                errorMsg = 'معلومات الموقع غير متاحة. تأكد من تشغيل خدمة الموقع.';
+                errorMsg = 'معلومات الموقع غير متاحة';
                 break;
               case error.TIMEOUT:
-                errorMsg = 'انتهت مهلة طلب الموقع. يرجى المحاولة مرة أخرى.';
+                errorMsg = 'انتهت مهلة طلب الموقع';
                 break;
             }
             reject(new Error(errorMsg));
@@ -1526,38 +1271,25 @@
       });
     }
 
-    // دالة للحصول على اسم المدينة من الإحداثيات
     async function getCityNameFromCoordinates(lat, lng) {
       try {
         const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=ar`);
         const data = await response.json();
         return data.city || data.locality || 'غير معروف';
       } catch (error) {
-        try {
-          const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&accept-language=ar`);
-          const data = await response.json();
-          return data.address.city || data.address.town || data.address.village || 'غير معروف';
-        } catch (error2) {
-          return 'غير معروف';
-        }
+        return 'غير معروف';
       }
     }
 
-    // فتح إعدادات الموقع في المتصفح
     function openLocationSettings() {
       if (navigator.userAgent.includes('Chrome')) {
         window.open('chrome://settings/content/location', '_blank');
-      } else if (navigator.userAgent.includes('Firefox')) {
-        window.open('about:preferences#privacy', '_blank');
-      } else if (navigator.userAgent.includes('Safari')) {
-        window.open('x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices', '_blank');
       } else {
-        // للمتصفحات الأخرى، نعطي تعليمات
         locationGuide.classList.add('active');
       }
     }
 
-    // التحقق من المصادقة الحالية
+    // نظام المصادقة
     function checkExistingAuth() {
       const user = auth.currentUser;
       if (user) {
@@ -1568,77 +1300,6 @@
       }
     }
 
-    // محاكاة تحميل
-    function simulateLoading() {
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress >= 100) {
-          progress = 100;
-          clearInterval(interval);
-          updateProgress(progress);
-          loadingText.textContent = "جاهز!";
-          setTimeout(() => hideSplashScreen(), 500);
-        } else {
-          updateProgress(progress);
-          if (progress >= 30) loadingText.textContent = "جاري تحميل البيانات...";
-          if (progress >= 70) loadingText.textContent = "جاري تهيئة النظام...";
-          if (progress >= 90) loadingText.textContent = "جاهز للتسجيل...";
-        }
-      }, 300);
-    }
-
-    // بدء التحميل
-    simulateLoading();
-
-    // دالة لعرض التنبيهات
-    function showAlert(message, type = 'danger') {
-      alertContainer.innerHTML = `
-        <div class="alert alert-${type}">
-          ${message}
-        </div>
-      `;
-    }
-
-    // دالة لتبديل وضع النموذج
-    function toggleAuthMode() {
-      isLoginMode = !isLoginMode;
-      
-      if (isLoginMode) {
-        loginTitle.textContent = 'تسجيل الدخول';
-        submitText.textContent = 'تسجيل الدخول';
-        toggleText.textContent = 'ليس لديك حساب؟ ';
-        toggleForm.textContent = 'إنشاء حساب';
-      } else {
-        loginTitle.textContent = 'إنشاء حساب جديد';
-        submitText.textContent = 'إنشاء حساب';
-        toggleText.textContent = 'لديك حساب بالفعل؟ ';
-        toggleForm.textContent = 'تسجيل الدخول';
-        
-        // عند التبديل إلى إنشاء حساب، نتحقق من الموقع
-        if (!userLocation) {
-          showAlert('يجب السماح بالوصول إلى الموقع أولاً لإنشاء حساب جديد', 'warning');
-          showLocationModal();
-          return;
-        }
-      }
-      
-      authForm.reset();
-      alertContainer.innerHTML = '';
-      rememberMe.checked = true;
-    }
-
-    // دالة للتحقق من وجود مستخدم
-    async function checkUserExists(userId) {
-      try {
-        const userDoc = await getDoc(doc(authDb, "users", userId));
-        return userDoc.exists();
-      } catch (error) {
-        return false;
-      }
-    }
-
-    // دالة للتعامل مع مصادقة المستخدم
     async function handleUserAuth(user) {
       try {
         const userExists = await checkUserExists(user.uid);
@@ -1666,24 +1327,29 @@
       }
     }
 
-    // دالة لتسجيل الدخول
+    async function checkUserExists(userId) {
+      try {
+        const userDoc = await getDoc(doc(authDb, "users", userId));
+        return userDoc.exists();
+      } catch (error) {
+        return false;
+      }
+    }
+
     async function loginUser(email, password, remember) {
       try {
         const persistence = remember ? browserLocalPersistence : browserSessionPersistence;
         await setPersistence(auth, persistence);
         
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        
-        await handleUserAuth(user);
+        await handleUserAuth(userCredential.user);
         showAlert('تم تسجيل الدخول بنجاح!', 'success');
         
       } catch (error) {
         let errorMessage = 'حدث خطأ أثناء تسجيل الدخول';
         switch (error.code) {
           case 'auth/invalid-email': errorMessage = 'البريد الإلكتروني غير صحيح'; break;
-          case 'auth/user-disabled': errorMessage = 'هذا الحساب معطل'; break;
-          case 'auth/user-not-found': errorMessage = 'لا يوجد حساب بهذا البريد الإلكتروني'; break;
+          case 'auth/user-not-found': errorMessage = 'لا يوجد حساب بهذا البريد'; break;
           case 'auth/wrong-password': errorMessage = 'كلمة المرور غير صحيحة'; break;
           default: errorMessage = error.message || errorMessage;
         }
@@ -1691,7 +1357,6 @@
       }
     }
 
-    // دالة لتسجيل مستخدم جديد مع الموقع
     async function registerUser(email, password) {
       try {
         if (!userLocation) {
@@ -1706,26 +1371,19 @@
           email: email,
           status: 'pending',
           registrationDate: new Date().toISOString(),
-          approvedDate: null,
-          approvedBy: null,
-          createdAt: new Date().toISOString(),
-          location: userLocation
+          location: userLocation,
+          createdAt: new Date().toISOString()
         };
         
         await setDoc(doc(authDb, "users", user.uid), userData);
-        
         await addDoc(collection(authDb, "pending_approvals"), {
           userId: user.uid,
-          username: email.split('@')[0],
           email: email,
-          requestDate: new Date().toISOString(),
-          status: 'pending',
           location: userLocation,
           createdAt: new Date().toISOString()
         });
         
-        showAlert('تم إنشاء الحساب بنجاح! يرجى انتظار الموافقة من الإدارة', 'success');
-        
+        showAlert('تم إنشاء الحساب بنجاح! يرجى انتظار الموافقة', 'success');
         setTimeout(async () => {
           await signOut(auth);
           toggleAuthMode();
@@ -1734,24 +1392,21 @@
       } catch (error) {
         let errorMessage = 'حدث خطأ أثناء إنشاء الحساب';
         switch (error.code) {
-          case 'auth/email-already-in-use': errorMessage = 'هذا البريد الإلكتروني مستخدم بالفعل'; break;
-          case 'auth/invalid-email': errorMessage = 'البريد الإلكتروني غير صحيح'; break;
-          case 'auth/weak-password': errorMessage = 'كلمة المرور ضعيفة. يجب أن تكون 6 أحرف على الأقل'; break;
+          case 'auth/email-already-in-use': errorMessage = 'هذا البريد الإلكتروني مستخدم'; break;
+          case 'auth/weak-password': errorMessage = 'كلمة المرور ضعيفة'; break;
           default: errorMessage = error.message || errorMessage;
         }
         throw new Error(errorMessage);
       }
     }
 
-    // دالة لتحديث واجهة المستخدم
     function updateUserUI(userData) {
       const displayName = userData.username || userData.email.split('@')[0];
       welcomeUser.textContent = `مرحباً، ${displayName}!`;
       userAvatar.textContent = displayName.charAt(0).toUpperCase();
-      welcomeMessage.textContent = `مرحباً ${displayName} في مكتب أور الإلكتروني`;
+      welcomeMessage.textContent = `مرحباً ${displayName} في مكتب أور`;
     }
 
-    // دالة لتحميل الخدمات
     async function loadButtonsData() {
       try {
         const docRef = doc(servicesDb, "serviceControl", "buttonsData");
@@ -1763,7 +1418,6 @@
       }
     }
 
-    // دالة لعرض الخدمات
     function renderButtons(buttonsData) {
       buttonsContainer.innerHTML = '';
       if (!buttonsData.length) {
@@ -1786,10 +1440,10 @@
           <h3 class="service-title">${btn.name || 'خدمة'}</h3>
           <p class="service-description">${btn.description || 'خدمة متميزة من مكتب أور'}</p>
           <div class="service-action">
-            <button class="service-btn">${btn.paused ? 'غير متاح' : 'استخدم الخدمة'} <i class="fas fa-arrow-left"></i></button>
+            <button class="service-btn">${btn.paused ? 'غير متاح' : 'استخدم الخدمة'}</button>
             <div class="service-status">
               <div class="status-dot ${btn.paused ? 'offline' : ''}"></div>
-              <span>${btn.paused ? 'غير متاح' : 'متاح الآن'}</span>
+              <span>${btn.paused ? 'غير متاح' : 'متاح'}</span>
             </div>
           </div>
         `;
@@ -1804,12 +1458,39 @@
       buttonsContainer.appendChild(servicesGrid);
     }
 
-    // أحداث نافذة الموقع
+    function showAlert(message, type = 'danger') {
+      alertContainer.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+    }
+
+    function toggleAuthMode() {
+      isLoginMode = !isLoginMode;
+      
+      if (isLoginMode) {
+        loginTitle.textContent = 'تسجيل الدخول';
+        submitText.textContent = 'تسجيل الدخول';
+        toggleText.textContent = 'ليس لديك حساب؟ ';
+        toggleForm.textContent = 'إنشاء حساب';
+      } else {
+        if (!userLocation) {
+          showAlert('يجب السماح بالموقع أولاً لإنشاء حساب', 'warning');
+          showLocationModal();
+          return;
+        }
+        loginTitle.textContent = 'إنشاء حساب جديد';
+        submitText.textContent = 'إنشاء حساب';
+        toggleText.textContent = 'لديك حساب بالفعل؟ ';
+        toggleForm.textContent = 'تسجيل الدخول';
+      }
+      
+      authForm.reset();
+      alertContainer.innerHTML = '';
+    }
+
+    // الأحداث
     allowLocationBtn.addEventListener('click', async () => {
       try {
         allowLocationBtn.disabled = true;
-        allowLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تحديد الموقع...';
-        hideLocationError();
+        allowLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحديد...';
         
         userLocation = await getUserLocation();
         hideLocationModal();
@@ -1818,15 +1499,12 @@
       } catch (error) {
         showLocationError(error.message);
         allowLocationBtn.disabled = false;
-        allowLocationBtn.innerHTML = '<i class="fas fa-check-circle"></i> موافقة ومشاركة الموقع';
+        allowLocationBtn.innerHTML = '<i class="fas fa-check-circle"></i> موافقة على المشاركة';
       }
     });
 
-    openSettingsBtn.addEventListener('click', () => {
-      openLocationSettings();
-    });
+    openSettingsBtn.addEventListener('click', openLocationSettings);
 
-    // أحداث النموذج
     authForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -1869,7 +1547,6 @@
       }
     });
 
-    // مراقبة حالة المصادقة
     onAuthStateChanged(auth, (user) => {
       if (user) {
         handleUserAuth(user);
@@ -1879,32 +1556,8 @@
       }
     });
 
-    // حركة النص الترحيبي
-    const welcomeMessages = [
-      "مرحباً بكم في مكتب أور الإلكتروني",
-      "نحن هنا لخدمتكم على مدار الساعة",
-      "أفضل الخدمات الإلكترونية بين يديك"
-    ];
-    
-    let welcomeIndex = 0;
-    function changeWelcomeMessage() {
-      welcomeMessage.style.opacity = 0;
-      setTimeout(() => {
-        welcomeIndex = (welcomeIndex + 1) % welcomeMessages.length;
-        welcomeMessage.textContent = welcomeMessages[welcomeIndex];
-        welcomeMessage.style.opacity = 1;
-      }, 500);
-    }
-    setInterval(changeWelcomeMessage, 5000);
-
-    // حركة الشريط العلوي
-    const texts = document.querySelectorAll('.typing-text span');
-    setInterval(() => {
-      texts[current].classList.remove('active');
-      current = (current + 1) % texts.length;
-      texts[current].classList.add('active');
-    }, 4000);
+    // بدء التحميل
+    simulateLoading();
   </script>
 </body>
 </html>
-

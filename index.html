@@ -36,10 +36,6 @@
       margin: 0; 
       padding: 0; 
       box-sizing: border-box; 
-      -webkit-tap-highlight-color: transparent; /* إزالة التمييز عند النقر */
-      -webkit-touch-callout: none; /* منع قائمة النص في WebView */
-      -webkit-user-select: none; /* منع تحديد النص في WebView */
-      user-select: none;
     }
     
     html, body {
@@ -49,17 +45,6 @@
       color: white;
       direction: rtl;
       overflow-x: hidden;
-      /* تحسينات التمرير لـ WebView */
-      -webkit-overflow-scrolling: touch; /* التمرير السلس في iOS */
-      overflow-scrolling: touch;
-      touch-action: pan-y; /* السماح بالتمرير العمودي فقط */
-    }
-    
-    /* تحسينات التمرير لـ WebView */
-    .scrollable {
-      -webkit-overflow-scrolling: touch;
-      overflow-scrolling: touch;
-      overscroll-behavior: contain; /* منع تأثير rimble عند نهاية التمرير */
     }
     
     /* شاشة الافتتاح */
@@ -176,9 +161,6 @@
       align-items: center;
       z-index: 999;
       padding: 20px;
-      /* تحسينات التمرير لـ WebView */
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
     }
     
     .login-container {
@@ -232,9 +214,6 @@
       font-family: 'Cairo', sans-serif;
       font-size: 1rem;
       transition: all 0.3s ease;
-      /* تحسينات لـ WebView */
-      -webkit-appearance: none; /* إزالة المظهر الافتراضي في iOS */
-      appearance: none;
     }
     
     .form-control:focus {
@@ -269,9 +248,6 @@
       transition: all 0.3s ease;
       font-family: 'Cairo', sans-serif;
       margin-bottom: 20px;
-      /* تحسينات لـ WebView */
-      -webkit-appearance: none;
-      appearance: none;
     }
     
     .submit-btn:hover {
@@ -339,8 +315,6 @@
       display: none;
       height: 100%;
       flex-direction: column;
-      /* تحسينات التمرير لـ WebView */
-      overflow: hidden;
     }
     
     /* Header Styles - محسّن للهواتف */
@@ -449,9 +423,6 @@
       font-size: 0.8rem;
       white-space: nowrap;
       flex-shrink: 0;
-      /* تحسينات لـ WebView */
-      -webkit-appearance: none;
-      appearance: none;
     }
     
     .logout-btn:hover {
@@ -468,10 +439,6 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      /* تحسينات التمرير لـ WebView */
-      -webkit-overflow-scrolling: touch;
-      overflow-scrolling: touch;
-      overscroll-behavior: contain;
     }
     
     /* باقي الستايلات تبقى كما هي */
@@ -678,9 +645,6 @@
       box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
       position: relative;
       overflow: hidden;
-      /* تحسينات لـ WebView */
-      -webkit-appearance: none;
-      appearance: none;
     }
     
     .service-btn::before {
@@ -1247,7 +1211,6 @@
   </div>
 
   <script type="module">
-    // كود Firebase الأصلي يبقى كما هو...
     // إعدادات Firebase للتسجيل (القاعدة الجديدة)
     const authFirebaseConfig = {
       apiKey: "AIzaSyCzpxIaiiwy-Fxl8iDICAITfj8mpFrYWhk",
@@ -1803,50 +1766,6 @@
     if (window.innerWidth <= 480) {
       logoutText.style.display = 'none';
     }
-
-    // ===========================================
-    // تحسينات خاصة لـ WebView
-    // ===========================================
-
-    // منع التمرير الأفقي في WebView
-    document.addEventListener('touchmove', function(e) {
-      if (e.touches.length > 1) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-
-    // تحسين التمرير في iOS WebView
-    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-      document.body.style.webkitOverflowScrolling = 'touch';
-      document.body.style.overflow = 'auto';
-    }
-
-    // إصلاح التمرير في Android WebView
-    if (navigator.userAgent.toLowerCase().indexOf('android') > -1) {
-      let startY = 0;
-      
-      document.addEventListener('touchstart', function(e) {
-        startY = e.touches[0].clientY;
-      }, { passive: true });
-      
-      document.addEventListener('touchmove', function(e) {
-        const touchY = e.touches[0].clientY;
-        const diffY = startY - touchY;
-        
-        // إذا كان التمرير أفقيًا، منعه
-        if (Math.abs(diffY) < Math.abs(e.touches[0].clientX - startY)) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-    }
-
-    // إضافة class للعناصر القابلة للتمرير
-    const scrollableElements = document.querySelectorAll('main, .login-screen');
-    scrollableElements.forEach(el => {
-      el.classList.add('scrollable');
-    });
-
-    console.log('WebView scroll enhancements applied');
   </script>
 </body>
 </html>

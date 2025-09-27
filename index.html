@@ -317,7 +317,7 @@
       flex-direction: column;
     }
     
-    /* Header Styles */
+    /* Header Styles - محسّن للهواتف */
     header {
       position: fixed; 
       top: 0; 
@@ -331,7 +331,7 @@
       justify-content: space-between;
       z-index: 100;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-      padding: 0 20px;
+      padding: 0 15px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     }
     
@@ -340,14 +340,16 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      gap: 10px;
     }
     
     .typing-text {
       position: relative; 
-      min-width: 200px; 
-      height: 40px; 
+      min-width: 120px; 
+      height: 35px; 
       overflow: hidden;
       text-align: center;
+      flex: 1;
     }
     
     .typing-text span {
@@ -359,8 +361,8 @@
       transition: opacity 0.6s ease, transform 0.6s ease;
       width: 100%; 
       text-align: center;
-      font-size: 1.3rem;
-      font-weight: 800;
+      font-size: 1.1rem;
+      font-weight: 700;
       background: linear-gradient(to right, #fff, #c0d4ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -374,49 +376,58 @@
       z-index: 1;
     }
     
-    /* User Info Styles */
+    /* User Info Styles - محسّن للهواتف */
     .user-info {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
+      flex-shrink: 0;
     }
     
     .welcome-user {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       background: linear-gradient(to right, #4cc9f0, #4361ee);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100px;
     }
     
     .user-avatar {
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
     
     .logout-btn {
       background: rgba(248, 113, 113, 0.2);
       color: var(--danger);
       border: 1px solid var(--danger);
-      padding: 8px 16px;
-      border-radius: 8px;
+      padding: 6px 12px;
+      border-radius: 6px;
       cursor: pointer;
       font-family: 'Cairo', sans-serif;
       font-weight: 600;
       transition: all 0.3s ease;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     
     .logout-btn:hover {
       background: rgba(248, 113, 113, 0.3);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
     }
     
     /* Main Content */
@@ -430,7 +441,7 @@
       gap: 20px;
     }
     
-    /* تحسينات على قسم الترحيب */
+    /* باقي الستايلات تبقى كما هي */
     .hero {
       background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(114, 9, 183, 0.2));
       border-radius: 24px;
@@ -488,7 +499,6 @@
       font-weight: 400;
     }
     
-    /* نص التحية المتحرك - محسّن */
     .welcome-text {
       position: relative;
       text-align: center;
@@ -524,7 +534,6 @@
       50% { opacity: 0; }
     }
     
-    /* تصميم جديد ومحسّن للأزرار - مصغّر */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -570,7 +579,6 @@
       opacity: 1;
     }
     
-    /* تصميم محسّن للأيقونات - مصغّر */
     .service-icon {
       width: 60px;
       height: 60px;
@@ -620,7 +628,6 @@
       z-index: 2;
     }
     
-    /* تصميم محسّن للأزرار - مصغّر */
     .service-btn {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
@@ -695,7 +702,6 @@
       100% { box-shadow: 0 0 0 0 rgba(248, 113, 113, 0); }
     }
     
-    /* قسم الميزات - محسّن */
     .features-section {
       background: rgba(255, 255, 255, 0.03);
       border-radius: 24px;
@@ -783,7 +789,6 @@
       line-height: 1.5;
     }
     
-    /* Footer محسّن */
     footer {
       text-align: center;
       padding: 25px;
@@ -794,7 +799,6 @@
       margin-top: auto;
     }
     
-    /* تحسينات للخدمات المميزة */
     .service-card.popular-service {
       border: 1px solid rgba(255, 204, 0, 0.3);
       position: relative;
@@ -815,7 +819,6 @@
       z-index: 3;
     }
     
-    /* تصميم محسّن لحالة التحميل */
     .loading {
       display: flex;
       flex-direction: column;
@@ -840,8 +843,50 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* Responsive Design */
+    /* Responsive Design - محسّن أكثر للهواتف */
     @media screen and (max-width: 768px) {
+      :root {
+        --header-height: 60px;
+      }
+      
+      header {
+        padding: 0 10px;
+        height: 60px;
+      }
+      
+      .header-content {
+        gap: 8px;
+      }
+      
+      .typing-text {
+        min-width: 100px;
+        height: 30px;
+      }
+      
+      .typing-text span {
+        font-size: 1rem;
+      }
+      
+      .user-info {
+        gap: 8px;
+      }
+      
+      .welcome-user {
+        font-size: 0.8rem;
+        max-width: 80px;
+      }
+      
+      .user-avatar {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+      }
+      
+      .logout-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+      }
+      
       .login-container {
         padding: 30px 20px;
         margin: 10px;
@@ -855,14 +900,26 @@
         font-size: 1.5rem;
       }
       
-      .header-content {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
+      main {
+        padding: 15px;
+        margin-top: 60px;
       }
       
-      .user-info {
-        justify-content: center;
+      .hero {
+        padding: 25px 20px;
+        min-height: 170px;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .welcome-message {
+        font-size: 1.8rem;
       }
       
       .services-grid {
@@ -882,6 +939,41 @@
     }
     
     @media screen and (max-width: 480px) {
+      :root {
+        --header-height: 55px;
+      }
+      
+      header {
+        height: 55px;
+        padding: 0 8px;
+      }
+      
+      .typing-text {
+        min-width: 80px;
+        height: 25px;
+      }
+      
+      .typing-text span {
+        font-size: 0.9rem;
+      }
+      
+      .welcome-user {
+        font-size: 0.75rem;
+        max-width: 60px;
+        display: none; /* إخفاء النص في الشاشات الصغيرة جداً */
+      }
+      
+      .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+      }
+      
+      .logout-btn {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+      }
+      
       .login-container {
         padding: 25px 15px;
       }
@@ -890,14 +982,31 @@
         font-size: 2.2rem;
       }
       
-      .welcome-user {
+      .login-title {
+        font-size: 1.3rem;
+      }
+      
+      main {
+        padding: 12px;
+        margin-top: 55px;
+      }
+      
+      .hero {
+        padding: 20px 15px;
+        min-height: 150px;
+      }
+      
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      
+      .hero p {
         font-size: 1rem;
       }
       
-      .user-avatar {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
+      .welcome-message {
+        font-size: 1.5rem;
+        padding: 0 10px;
       }
       
       .service-card {
@@ -909,6 +1018,47 @@
         height: 50px;
         font-size: 1.4rem;
       }
+      
+      .service-title {
+        font-size: 1.1rem;
+      }
+      
+      .service-btn {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .service-card, .feature-item {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: rgba(67, 97, 238, 0.4);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(67, 97, 238, 0.6);
     }
   </style>
 </head>
@@ -949,8 +1099,8 @@
         </div>
         
         <div class="remember-me">
-          <input type="checkbox" id="rememberMe">
-          <label for="rememberMe">تذكرني</label>
+          <input type="checkbox" id="rememberMe" checked>
+          <label for="rememberMe">تذكرني على هذا الجهاز</label>
         </div>
         
         <button type="submit" class="submit-btn" id="submitBtn">
@@ -981,7 +1131,10 @@
         <div class="user-info" id="userInfo">
           <div class="welcome-user" id="welcomeUser">مرحباً، أحمد!</div>
           <div class="user-avatar" id="userAvatar">أ</div>
-          <button class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
+          <button class="logout-btn" id="logoutBtn" title="تسجيل الخروج">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="logout-text">خروج</span>
+          </button>
         </div>
       </div>
     </header>
@@ -1106,8 +1259,8 @@
     const servicesApp = initializeApp(servicesFirebaseConfig, "servicesApp");
     
     const auth = getAuth(authApp);
-    const authDb = getFirestore(authApp); // قاعدة بيانات المستخدمين
-    const servicesDb = getFirestore(servicesApp); // قاعدة بيانات الخدمات
+    const authDb = getFirestore(authApp);
+    const servicesDb = getFirestore(servicesApp);
 
     // عناصر DOM
     const splashScreen = document.getElementById('splashScreen');
@@ -1143,16 +1296,29 @@
       loadingProgress.style.width = percent + '%';
     }
 
-    // دالة لإخفاء شاشة الافتتاح
+    // دالة محسنة لإخفاء شاشة الافتتاح
     function hideSplashScreen() {
       splashScreen.classList.add('hidden');
       setTimeout(() => {
         splashScreen.style.display = 'none';
-        loginScreen.style.display = 'flex';
+        // التحقق من وجود مستخدم مسجل مسبقاً
+        checkExistingAuth();
       }, 800);
     }
 
-    // محاكاة تحميل
+    // التحقق من المصادقة الحالية
+    function checkExistingAuth() {
+      const user = auth.currentUser;
+      if (user) {
+        // يوجد مستخدم مسجل، تحميل البيانات مباشرة
+        handleUserAuth(user);
+      } else {
+        // لا يوجد مستخدم مسجل، عرض شاشة التسجيل
+        loginScreen.style.display = 'flex';
+      }
+    }
+
+    // محاكاة تحميل محسنة مع معالجة الأخطاء
     function simulateLoading() {
       let progress = 0;
       const interval = setInterval(() => {
@@ -1160,13 +1326,20 @@
         if (progress >= 100) {
           progress = 100;
           clearInterval(interval);
-          hideSplashScreen();
+          updateProgress(progress);
+          loadingText.textContent = "جاهز!";
+          
+          // تأكيد إخفاء شاشة الافتتاح
+          setTimeout(() => {
+            hideSplashScreen();
+          }, 500);
+        } else {
+          updateProgress(progress);
+          
+          if (progress >= 30) loadingText.textContent = "جاري تحميل البيانات...";
+          if (progress >= 70) loadingText.textContent = "جاري تهيئة النظام...";
+          if (progress >= 90) loadingText.textContent = "جاهز للتسجيل...";
         }
-        updateProgress(progress);
-        
-        if (progress >= 30) loadingText.textContent = "جاري تحميل البيانات...";
-        if (progress >= 70) loadingText.textContent = "جاري تهيئة النظام...";
-        if (progress >= 90) loadingText.textContent = "جاهز للتسجيل...";
       }, 300);
     }
 
@@ -1200,6 +1373,7 @@
       
       authForm.reset();
       alertContainer.innerHTML = '';
+      rememberMe.checked = true; // افتراضيًا مفعل
     }
 
     // دالة للتحقق من وجود مستخدم في قاعدة البيانات
@@ -1213,19 +1387,14 @@
       }
     }
 
-    // دالة لتسجيل الدخول
-    async function loginUser(email, password, remember) {
+    // دالة للتعامل مع مصادقة المستخدم
+    async function handleUserAuth(user) {
       try {
-        await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
-        
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        
         // التحقق من وجود المستخدم في قاعدة البيانات
         const userExists = await checkUserExists(user.uid);
         if (!userExists) {
           await signOut(auth);
-          throw new Error('الحساب غير موجود في النظام. يرجى إنشاء حساب جديد');
+          throw new Error('الحساب غير موجود في النظام');
         }
         
         // التحقق من حالة الموافقة
@@ -1237,17 +1406,32 @@
           throw new Error('حسابك قيد الانتظار. يرجى انتظار الموافقة من الإدارة');
         }
         
+        // تسجيل الدخول الناجح
+        loginScreen.style.display = 'none';
+        mainContent.style.display = 'flex';
+        updateUserUI(userData);
+        loadButtonsData();
+        
+      } catch (error) {
+        console.error('Error handling user auth:', error);
+        loginScreen.style.display = 'flex';
+        showAlert(error.message, 'warning');
+      }
+    }
+
+    // دالة لتسجيل الدخول
+    async function loginUser(email, password, remember) {
+      try {
+        // تعيين استمرارية الجلسة بناءً على خيار "تذكرني"
+        const persistence = remember ? browserLocalPersistence : browserSessionPersistence;
+        await setPersistence(auth, persistence);
+        
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        
+        await handleUserAuth(user);
         showAlert('تم تسجيل الدخول بنجاح!', 'success');
         
-        // إخفاء شاشة التسجيل وإظهار المحتوى الرئيسي بعد تأخير
-        setTimeout(() => {
-          loginScreen.style.display = 'none';
-          mainContent.style.display = 'flex';
-          updateUserUI(userData);
-          loadButtonsData(); // تحميل البيانات بعد التسجيل الناجح
-        }, 1500);
-        
-        return userData;
       } catch (error) {
         let errorMessage = 'حدث خطأ أثناء تسجيل الدخول';
         
@@ -1278,7 +1462,7 @@
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         
-        // حفظ بيانات المستخدم في Firestore (قاعدة البيانات الجديدة)
+        // حفظ بيانات المستخدم في Firestore
         await setDoc(doc(authDb, "users", user.uid), {
           username: email.split('@')[0],
           email: email,
@@ -1289,7 +1473,7 @@
           createdAt: new Date().toISOString()
         });
         
-        // إضافة طلب انتظار للموافقة (قاعدة البيانات الجديدة)
+        // إضافة طلب انتظار للموافقة
         await addDoc(collection(authDb, "pending_approvals"), {
           userId: user.uid,
           username: email.split('@')[0],
@@ -1352,26 +1536,6 @@
         return 'fas fa-calendar-check';
       if (name.includes('تسجيل') || name.includes('حساب') || name.includes('مستخدم')) 
         return 'fas fa-user-plus';
-      if (name.includes('تقرير') || name.includes('إحصائية') || name.includes('بيانات')) 
-        return 'fas fa-chart-bar';
-      if (name.includes('بطاقة') || name.includes('هوية') || name.includes('تعريف')) 
-        return 'fas fa-address-card';
-      if (name.includes('معاملة') || name.includes('معاملات') || name.includes('إجراء')) 
-        return 'fas fa-file-contract';
-      if (name.includes('وثيقة') || name.includes('مستند') || name.includes('ملف')) 
-        return 'fas fa-file-alt';
-      if (name.includes('تعديل') || name.includes('تغيير') || name.includes('تحرير')) 
-        return 'fas fa-edit';
-      if (name.includes('بحث') || name.includes('عن') || name.includes('بحث عن')) 
-        return 'fas fa-search';
-      if (name.includes('إشعار') || name.includes('تنبيه') || name.includes('إعلام')) 
-        return 'fas fa-bell';
-      if (name.includes('إعدادات') || name.includes('خصائص') || name.includes('تهيئة')) 
-        return 'fas fa-cog';
-      if (name.includes('مساعدة') || name.includes('دليل') || name.includes('تعليمات')) 
-        return 'fas fa-question-circle';
-      if (name.includes('تقييم') || name.includes('رأي') || name.includes('تقييم خدمة')) 
-        return 'fas fa-star';
       
       return 'fas fa-concierge-bell';
     }
@@ -1391,7 +1555,7 @@
       return descriptions[Math.floor(Math.random() * descriptions.length)];
     }
 
-    // دالة لتحميل الخدمات من Firebase (القاعدة القديمة)
+    // دالة لتحميل الخدمات من Firebase
     async function loadButtonsData() {
       try {
         const docRef = doc(servicesDb, "serviceControl", "buttonsData");
@@ -1416,7 +1580,6 @@
         return;
       }
       
-      // إنشاء grid للخدمات
       const servicesGrid = document.createElement('div');
       servicesGrid.className = 'services-grid';
       
@@ -1427,38 +1590,31 @@
         serviceCard.className = 'service-card';
         serviceCard.style.animationDelay = `${index * 0.1}s`;
         
-        // إضافة فئة خاصة للخدمات المميزة
         if (btn.popular) {
           serviceCard.classList.add('popular-service');
         }
         
-        // أيقونة الخدمة
         const serviceIcon = document.createElement('div');
         serviceIcon.className = 'service-icon';
         const iconElement = document.createElement('i');
         iconElement.className = getIconForService(btn.name || 'خدمة');
         serviceIcon.appendChild(iconElement);
         
-        // عنوان الخدمة
         const serviceTitle = document.createElement('h3');
         serviceTitle.className = 'service-title';
         serviceTitle.textContent = btn.name || 'خدمة';
         
-        // وصف الخدمة - استخدام الوصف من Firebase إذا موجود، وإلا استخدام الوصف العشوائي
         const serviceDescription = document.createElement('p');
         serviceDescription.className = 'service-description';
         serviceDescription.textContent = btn.description || generateServiceDescription(btn.name || 'خدمة');
         
-        // قسم الإجراءات
         const serviceAction = document.createElement('div');
         serviceAction.className = 'service-action';
         
-        // زر الإجراء
         const serviceBtn = document.createElement('button');
         serviceBtn.className = 'service-btn';
         serviceBtn.innerHTML = `${btn.paused ? 'غير متاح' : 'استخدم الخدمة'} <i class="fas fa-arrow-left"></i>`;
         
-        // حالة الخدمة
         const serviceStatus = document.createElement('div');
         serviceStatus.className = 'service-status';
         const statusDot = document.createElement('div');
@@ -1472,17 +1628,15 @@
         serviceAction.appendChild(serviceBtn);
         serviceAction.appendChild(serviceStatus);
         
-        // إضافة جميع العناصر إلى البطاقة
         serviceCard.appendChild(serviceIcon);
         serviceCard.appendChild(serviceTitle);
         serviceCard.appendChild(serviceDescription);
         serviceCard.appendChild(serviceAction);
         
-        // إضافة حدث النقر على البطاقة بأكملها
         if (!btn.paused) {
           serviceCard.onclick = () => btn.url && window.open(btn.url, '_blank');
           serviceBtn.onclick = (e) => {
-            e.stopPropagation(); // منع تنفيذ الحدث على البطاقة
+            e.stopPropagation();
             btn.url && window.open(btn.url, '_blank');
           };
         } else {
@@ -1527,7 +1681,6 @@
         return;
       }
       
-      // إظهار حالة التحميل
       submitText.style.display = 'none';
       formSpinner.style.display = 'inline-block';
       submitBtn.disabled = true;
@@ -1541,7 +1694,6 @@
       } catch (error) {
         showAlert(error.message);
       } finally {
-        // إخفاء حالة التحميل
         submitText.style.display = 'inline';
         formSpinner.style.display = 'none';
         submitBtn.disabled = false;
@@ -1554,35 +1706,17 @@
     logoutBtn.addEventListener('click', async () => {
       try {
         await signOut(auth);
+        showAlert('تم تسجيل الخروج بنجاح', 'success');
       } catch (error) {
         console.error('Error signing out:', error);
+        showAlert('حدث خطأ أثناء تسجيل الخروج');
       }
     });
 
     // مراقبة حالة المصادقة
-    onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        // التحقق من وجود المستخدم في قاعدة البيانات
-        const userExists = await checkUserExists(user.uid);
-        if (userExists) {
-          const userDoc = await getDoc(doc(authDb, "users", user.uid));
-          if (userDoc.exists()) {
-            const userData = userDoc.data();
-            if (userData.status === 'approved') {
-              // إخفاء شاشة التسجيل وإظهار المحتوى الرئيسي
-              loginScreen.style.display = 'none';
-              mainContent.style.display = 'flex';
-              updateUserUI(userData);
-              loadButtonsData(); // تحميل البيانات عند الدخول
-            } else {
-              await signOut(auth);
-              showAlert('حسابك قيد الانتظار. يرجى انتظار الموافقة من الإدارة', 'warning');
-            }
-          }
-        } else {
-          await signOut(auth);
-          showAlert('الحساب غير موجود في النظام. يرجى إنشاء حساب جديد', 'warning');
-        }
+        handleUserAuth(user);
       } else {
         loginScreen.style.display = 'flex';
         mainContent.style.display = 'none';
@@ -1608,7 +1742,6 @@
       }, 500);
     }
     
-    // تغيير نص الترحيب كل 5 ثوان
     setInterval(changeWelcomeMessage, 5000);
 
     // حركة الشريط العلوي
@@ -1618,6 +1751,21 @@
       current = (current + 1) % texts.length;
       texts[current].classList.add('active');
     }, 4000);
+
+    // إضافة أيقونة لتسجيل الخروج في الهواتف
+    const logoutText = logoutBtn.querySelector('.logout-text');
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 480) {
+        logoutText.style.display = 'none';
+      } else {
+        logoutText.style.display = 'inline';
+      }
+    });
+
+    // تطبيق التغيير مباشرة عند التحميل
+    if (window.innerWidth <= 480) {
+      logoutText.style.display = 'none';
+    }
   </script>
 </body>
 </html>

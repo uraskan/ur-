@@ -310,7 +310,165 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* المحتوى الرئيسي */
+    /* شاشة طلب إذن الموقع */
+    .location-permission-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, var(--dark), var(--dark-light));
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 998;
+      padding: 20px;
+    }
+    
+    .location-container {
+      background: rgba(26, 36, 61, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    
+    .location-icon {
+      font-size: 4rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    .location-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: white;
+      font-weight: 700;
+    }
+    
+    .location-description {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: right;
+    }
+    
+    .location-features {
+      background: rgba(76, 201, 240, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: right;
+    }
+    
+    .location-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding: 8px 0;
+    }
+    
+    .location-feature i {
+      color: var(--success);
+      font-size: 1.2rem;
+    }
+    
+    .location-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    
+    .btn-primary {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+    }
+    
+    .btn-secondary {
+      padding: 15px 30px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .location-error {
+      background: rgba(248, 113, 113, 0.1);
+      border: 1px solid var(--danger);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      display: none;
+    }
+    
+    .location-instructions {
+      background: rgba(250, 204, 21, 0.1);
+      border: 1px solid var(--warning);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: right;
+      display: none;
+    }
+    
+    .location-instructions h4 {
+      color: var(--warning);
+      margin-bottom: 10px;
+    }
+    
+    .location-steps {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .location-steps li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .location-steps i {
+      color: var(--warning);
+      margin-top: 2px;
+    }
+
+    /* باقي الستايلات تبقى كما هي */
     .main-content {
       display: none;
       height: 100%;
@@ -900,6 +1058,18 @@
         font-size: 1.5rem;
       }
       
+      .location-container {
+        padding: 30px 20px;
+      }
+      
+      .location-title {
+        font-size: 1.5rem;
+      }
+      
+      .location-buttons {
+        flex-direction: column;
+      }
+      
       main {
         padding: 15px;
         margin-top: 60px;
@@ -984,6 +1154,18 @@
       
       .login-title {
         font-size: 1.3rem;
+      }
+      
+      .location-container {
+        padding: 25px 15px;
+      }
+      
+      .location-title {
+        font-size: 1.3rem;
+      }
+      
+      .location-icon {
+        font-size: 3rem;
       }
       
       main {
@@ -1077,6 +1259,75 @@
     </div>
     <div class="loading-text" id="loadingText">جاري التحميل...</div>
     <div class="version">الإصدار 2.3</div>
+  </div>
+
+  <!-- شاشة طلب إذن الموقع -->
+  <div class="location-permission-screen" id="locationPermissionScreen">
+    <div class="location-container">
+      <div class="location-icon">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <h1 class="location-title">مشاركة الموقع مطلوبة</h1>
+      
+      <div class="location-description">
+        نحتاج إلى إذنك للوصول إلى موقعك الجغرافي لتقديم أفضل خدمة ممكنة. هذا يساعدنا في:
+      </div>
+      
+      <div class="location-features">
+        <div class="location-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>تحديد أقرب مكاتب الخدمة إليك</span>
+        </div>
+        <div class="location-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>تقديم خدمات مخصصة لمنطقتك</span>
+        </div>
+        <div class="location-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>تحسين تجربة المستخدم بشكل عام</span>
+        </div>
+        <div class="location-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>ضمان أمان وحماية معاملاتك</span>
+        </div>
+      </div>
+      
+      <div class="location-description">
+        <strong>ملاحظة:</strong> موقعك سيستخدم فقط لأغراض الخدمة ولن يتم مشاركته مع أي جهات خارجية.
+      </div>
+      
+      <div class="location-buttons">
+        <button class="btn-primary" id="allowLocationBtn">
+          <i class="fas fa-check"></i> الموافقة على المشاركة
+        </button>
+        <button class="btn-secondary" id="whyLocationBtn">
+          <i class="fas fa-question-circle"></i> لماذا نحتاج موقعك؟
+        </button>
+      </div>
+      
+      <div class="location-error" id="locationError">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span id="errorMessage">حدث خطأ في الحصول على الموقع. يرجى المحاولة مرة أخرى.</span>
+      </div>
+      
+      <div class="location-instructions" id="locationInstructions">
+        <h4><i class="fas fa-info-circle"></i> كيفية تمكين الموقع:</h4>
+        <ul class="location-steps">
+          <li>
+            <i class="fas fa-mobile-alt"></i>
+            <span>في المتصفح: انقر على أيقونة القفل بجانب العنوان ← إعدادات الموقع ← السماح</span>
+          </li>
+          <li>
+            <i class="fas fa-cog"></i>
+            <span>في الهاتف: الإعدادات ← الخصوصية ← خدمات الموقع ← تمكين</span>
+          </li>
+          <li>
+            <i class="fas fa-redo"></i>
+            <span>أعد تحميل الصفحة بعد تمكين الإذن</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <!-- شاشة تسجيل الدخول -->
@@ -1251,7 +1502,8 @@
       getDoc, 
       setDoc,
       collection,
-      addDoc
+      addDoc,
+      updateDoc
     } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
     // Initialize Firebase Apps
@@ -1264,10 +1516,18 @@
 
     // عناصر DOM
     const splashScreen = document.getElementById('splashScreen');
+    const locationPermissionScreen = document.getElementById('locationPermissionScreen');
     const loginScreen = document.getElementById('loginScreen');
     const mainContent = document.getElementById('mainContent');
     const loadingProgress = document.getElementById('loadingProgress');
     const loadingText = document.getElementById('loadingText');
+    
+    // عناصر شاشة الموقع
+    const allowLocationBtn = document.getElementById('allowLocationBtn');
+    const whyLocationBtn = document.getElementById('whyLocationBtn');
+    const locationError = document.getElementById('locationError');
+    const errorMessage = document.getElementById('errorMessage');
+    const locationInstructions = document.getElementById('locationInstructions');
     
     // عناصر نظام التسجيل
     const authForm = document.getElementById('authForm');
@@ -1290,6 +1550,7 @@
 
     let isLoginMode = true;
     let current = 0;
+    let userLocation = null;
 
     // دالة لتحديث شريط التقدم
     function updateProgress(percent) {
@@ -1301,9 +1562,107 @@
       splashScreen.classList.add('hidden');
       setTimeout(() => {
         splashScreen.style.display = 'none';
-        // التحقق من وجود مستخدم مسجل مسبقاً
-        checkExistingAuth();
+        // التحقق من إذن الموقع أولاً
+        checkLocationPermission();
       }, 800);
+    }
+
+    // التحقق من إذن الموقع
+    function checkLocationPermission() {
+      if (!navigator.geolocation) {
+        // المتصفح لا يدعم تحديد الموقع
+        showLocationError('المتصفح لا يدعم تحديد الموقع. يرجى استخدام متصفح حديث.');
+        return;
+      }
+      
+      // عرض شاشة طلب إذن الموقع
+      locationPermissionScreen.style.display = 'flex';
+    }
+
+    // دالة للحصول على الموقع الحقيقي
+    async function getUserLocation() {
+      return new Promise((resolve, reject) => {
+        if (!navigator.geolocation) {
+          reject(new Error('المتصفح لا يدعم تحديد الموقع'));
+          return;
+        }
+
+        const options = {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 60000
+        };
+
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            try {
+              const { latitude, longitude, accuracy } = position.coords;
+              
+              // استخدام خدمة reverse geocoding للحصول على اسم المدينة
+              const cityName = await getCityNameFromCoordinates(latitude, longitude);
+              
+              const locationData = {
+                latitude,
+                longitude,
+                accuracy,
+                city: cityName,
+                timestamp: new Date().toISOString(),
+                source: 'gps'
+              };
+              
+              resolve(locationData);
+            } catch (error) {
+              reject(error);
+            }
+          },
+          (error) => {
+            let errorMsg = 'حدث خطأ في الحصول على الموقع';
+            switch (error.code) {
+              case error.PERMISSION_DENIED:
+                errorMsg = 'تم رفض إذن الموقع. يرجى السماح بالوصول إلى الموقع للمتابعة.';
+                break;
+              case error.POSITION_UNAVAILABLE:
+                errorMsg = 'معلومات الموقع غير متاحة.';
+                break;
+              case error.TIMEOUT:
+                errorMsg = 'انتهت مهلة طلب الموقع.';
+                break;
+            }
+            reject(new Error(errorMsg));
+          },
+          options
+        );
+      });
+    }
+
+    // دالة للحصول على اسم المدينة من الإحداثيات
+    async function getCityNameFromCoordinates(lat, lng) {
+      try {
+        const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=ar`);
+        const data = await response.json();
+        return data.city || data.locality || 'غير معروف';
+      } catch (error) {
+        try {
+          const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&accept-language=ar`);
+          const data = await response.json();
+          return data.address.city || data.address.town || data.address.village || 'غير معروف';
+        } catch (error2) {
+          return 'غير معروف';
+        }
+      }
+    }
+
+    // دالة لعرض خطأ الموقع
+    function showLocationError(message) {
+      errorMessage.textContent = message;
+      locationError.style.display = 'block';
+      locationInstructions.style.display = 'block';
+    }
+
+    // دالة لإخفاء خطأ الموقع
+    function hideLocationError() {
+      locationError.style.display = 'none';
+      locationInstructions.style.display = 'none';
     }
 
     // التحقق من المصادقة الحالية
@@ -1456,22 +1815,25 @@
       }
     }
 
-    // دالة لتسجيل مستخدم جديد
+    // دالة لتسجيل مستخدم جديد مع حفظ الموقع
     async function registerUser(email, password) {
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         
-        // حفظ بيانات المستخدم في Firestore
-        await setDoc(doc(authDb, "users", user.uid), {
+        // حفظ بيانات المستخدم في Firestore مع الموقع
+        const userData = {
           username: email.split('@')[0],
           email: email,
           status: 'pending',
           registrationDate: new Date().toISOString(),
           approvedDate: null,
           approvedBy: null,
-          createdAt: new Date().toISOString()
-        });
+          createdAt: new Date().toISOString(),
+          location: userLocation // حفظ بيانات الموقع
+        };
+        
+        await setDoc(doc(authDb, "users", user.uid), userData);
         
         // إضافة طلب انتظار للموافقة
         await addDoc(collection(authDb, "pending_approvals"), {
@@ -1480,6 +1842,7 @@
           email: email,
           requestDate: new Date().toISOString(),
           status: 'pending',
+          location: userLocation, // إضافة الموقع لطلب الموافقة
           createdAt: new Date().toISOString()
         });
         
@@ -1663,6 +2026,29 @@
       buttonsContainer.appendChild(servicesGrid);
     }
 
+    // أحداث شاشة الموقع
+    allowLocationBtn.addEventListener('click', async () => {
+      try {
+        allowLocationBtn.disabled = true;
+        allowLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الحصول على الموقع...';
+        
+        userLocation = await getUserLocation();
+        
+        // إخفاء شاشة الموقع وعرض شاشة التسجيل
+        locationPermissionScreen.style.display = 'none';
+        checkExistingAuth();
+        
+      } catch (error) {
+        showLocationError(error.message);
+        allowLocationBtn.disabled = false;
+        allowLocationBtn.innerHTML = '<i class="fas fa-check"></i> الموافقة على المشاركة';
+      }
+    });
+
+    whyLocationBtn.addEventListener('click', () => {
+      locationInstructions.style.display = locationInstructions.style.display === 'none' ? 'block' : 'none';
+    });
+
     // معالجة إرسال النموذج
     authForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -1689,6 +2075,10 @@
         if (isLoginMode) {
           await loginUser(email, password, remember);
         } else {
+          // للتسجيل: التأكد من وجود الموقع أولاً
+          if (!userLocation) {
+            throw new Error('يجب السماح بالوصول إلى الموقع لإنشاء حساب جديد');
+          }
           await registerUser(email, password);
         }
       } catch (error) {

@@ -148,6 +148,316 @@
       color: rgba(255, 255, 255, 0.7);
     }
     
+    /* نافذة الموقع المنبثقة */
+    .location-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .location-modal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .modal-content {
+      background: linear-gradient(135deg, rgba(26, 36, 61, 0.95), rgba(13, 27, 42, 0.98));
+      border-radius: 24px;
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(76, 201, 240, 0.1) 0%, transparent 70%);
+      animation: pulse 6s infinite linear;
+    }
+    
+    .location-icon {
+      font-size: 4rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    
+    .modal-title {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: white;
+      font-weight: 700;
+      position: relative;
+      z-index: 2;
+      line-height: 1.4;
+    }
+    
+    .modal-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 2;
+      line-height: 1.6;
+    }
+    
+    .location-features {
+      background: rgba(76, 201, 240, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      text-align: right;
+      position: relative;
+      z-index: 2;
+      border: 1px solid rgba(76, 201, 240, 0.3);
+    }
+    
+    .location-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding: 8px 0;
+    }
+    
+    .location-feature:last-child {
+      margin-bottom: 0;
+    }
+    
+    .location-feature i {
+      color: var(--success);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    
+    .location-feature span {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: right;
+      flex: 1;
+    }
+    
+    .location-importance {
+      background: rgba(250, 204, 21, 0.1);
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .importance-title {
+      color: var(--warning);
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    
+    .importance-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      text-align: right;
+    }
+    
+    .modal-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+    }
+    
+    .btn-primary {
+      padding: 16px 32px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      justify-content: center;
+      min-width: 200px;
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+    }
+    
+    .btn-secondary {
+      padding: 16px 32px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      justify-content: center;
+      min-width: 200px;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.6);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+    
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .location-error {
+      background: rgba(248, 113, 113, 0.1);
+      border: 1px solid var(--danger);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      display: none;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .location-error.active {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .error-message {
+      color: var(--danger);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .location-guide {
+      background: rgba(76, 201, 240, 0.1);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      display: none;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .location-guide.active {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+    
+    .guide-title {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .guide-steps {
+      list-style: none;
+      padding: 0;
+      text-align: right;
+    }
+    
+    .guide-step {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 5px 0;
+    }
+    
+    .guide-step i {
+      color: var(--accent);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    
+    .guide-step span {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.85rem;
+      line-height: 1.4;
+      flex: 1;
+    }
+    
+    .mandatory-notice {
+      background: rgba(248, 113, 113, 0.1);
+      border: 1px solid var(--danger);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .mandatory-text {
+      color: var(--danger);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
     /* شاشة تسجيل الدخول */
     .login-screen {
       position: fixed;
@@ -159,7 +469,7 @@
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 999;
+      z-index: 998;
       padding: 20px;
     }
     
@@ -310,172 +620,14 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* شاشة طلب إذن الموقع */
-    .location-permission-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(160deg, var(--dark), var(--dark-light));
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 998;
-      padding: 20px;
-    }
-    
-    .location-container {
-      background: rgba(26, 36, 61, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 40px;
-      width: 100%;
-      max-width: 500px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-      text-align: center;
-    }
-    
-    .location-icon {
-      font-size: 4rem;
-      color: var(--accent);
-      margin-bottom: 20px;
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    
-    .location-title {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: white;
-      font-weight: 700;
-    }
-    
-    .location-description {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      text-align: right;
-    }
-    
-    .location-features {
-      background: rgba(76, 201, 240, 0.1);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 30px;
-      text-align: right;
-    }
-    
-    .location-feature {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      padding: 8px 0;
-    }
-    
-    .location-feature i {
-      color: var(--success);
-      font-size: 1.2rem;
-    }
-    
-    .location-buttons {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-    
-    .btn-primary {
-      padding: 15px 30px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Cairo', sans-serif;
-    }
-    
-    .btn-secondary {
-      padding: 15px 30px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Cairo', sans-serif;
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
-    }
-    
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    
-    .location-error {
-      background: rgba(248, 113, 113, 0.1);
-      border: 1px solid var(--danger);
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 20px;
-      display: none;
-    }
-    
-    .location-instructions {
-      background: rgba(250, 204, 21, 0.1);
-      border: 1px solid var(--warning);
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 20px;
-      text-align: right;
-      display: none;
-    }
-    
-    .location-instructions h4 {
-      color: var(--warning);
-      margin-bottom: 10px;
-    }
-    
-    .location-steps {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .location-steps li {
-      margin-bottom: 8px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    
-    .location-steps i {
-      color: var(--warning);
-      margin-top: 2px;
-    }
-
-    /* باقي الستايلات تبقى كما هي */
+    /* المحتوى الرئيسي */
     .main-content {
       display: none;
       height: 100%;
       flex-direction: column;
     }
     
-    /* Header Styles - محسّن للهواتف */
+    /* باقي الستايلات تبقى كما هي */
     header {
       position: fixed; 
       top: 0; 
@@ -534,7 +686,6 @@
       z-index: 1;
     }
     
-    /* User Info Styles - محسّن للهواتف */
     .user-info {
       display: flex;
       align-items: center;
@@ -588,7 +739,6 @@
       transform: translateY(-1px);
     }
     
-    /* Main Content */
     main {
       margin-top: var(--header-height);
       flex: 1;
@@ -599,7 +749,6 @@
       gap: 20px;
     }
     
-    /* باقي الستايلات تبقى كما هي */
     .hero {
       background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(114, 9, 183, 0.2));
       border-radius: 24px;
@@ -615,22 +764,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(76, 201, 240, 0.1) 0%, transparent 70%);
-      animation: pulse 8s infinite linear;
-    }
-    
-    @keyframes pulse {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
     
     .hero h1 {
@@ -680,18 +813,6 @@
       padding: 0 20px;
     }
     
-    .welcome-message::after {
-      content: '|';
-      animation: blink 1s infinite;
-      margin-right: 5px;
-      color: #4cc9f0;
-    }
-    
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -715,26 +836,10 @@
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
     
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
     .service-card:hover {
       transform: translateY(-5px) scale(1.02);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
       border-color: rgba(76, 201, 240, 0.4);
-    }
-    
-    .service-card:hover::before {
-      opacity: 1;
     }
     
     .service-icon {
@@ -749,8 +854,6 @@
       font-size: 1.6rem;
       box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
       transition: all 0.3s ease;
-      position: relative;
-      z-index: 2;
     }
     
     .service-card:hover .service-icon {
@@ -763,8 +866,6 @@
       font-weight: 700;
       margin-bottom: 10px;
       color: white;
-      position: relative;
-      z-index: 2;
     }
     
     .service-description {
@@ -773,8 +874,6 @@
       line-height: 1.5;
       margin-bottom: 15px;
       flex-grow: 1;
-      position: relative;
-      z-index: 2;
     }
     
     .service-action {
@@ -782,8 +881,6 @@
       justify-content: space-between;
       align-items: center;
       margin-top: auto;
-      position: relative;
-      z-index: 2;
     }
     
     .service-btn {
@@ -799,30 +896,11 @@
       align-items: center;
       gap: 6px;
       font-size: 0.85rem;
-      pointer-events: auto;
-      box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .service-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
     }
     
     .service-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
-    }
-    
-    .service-btn:hover::before {
-      left: 100%;
     }
     
     .service-status {
@@ -842,24 +920,6 @@
       animation: pulse-dot 2s infinite;
     }
     
-    @keyframes pulse-dot {
-      0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
-      70% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
-    }
-    
-    .status-dot.offline {
-      background: var(--danger);
-      box-shadow: 0 0 8px var(--danger);
-      animation: pulse-dot-offline 2s infinite;
-    }
-    
-    @keyframes pulse-dot-offline {
-      0% { box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.7); }
-      70% { box-shadow: 0 0 0 6px rgba(248, 113, 113, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(248, 113, 113, 0); }
-    }
-    
     .features-section {
       background: rgba(255, 255, 255, 0.03);
       border-radius: 24px;
@@ -874,24 +934,7 @@
       margin-bottom: 20px;
       text-align: center;
       color: white;
-      position: relative;
-      display: inline-block;
-      margin-right: auto;
-      margin-left: auto;
-      width: 100%;
       font-weight: 700;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      right: 50%;
-      transform: translateX(50%);
-      width: 70px;
-      height: 3px;
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      border-radius: 2px;
     }
     
     .features-grid {
@@ -926,12 +969,6 @@
       font-size: 1.3rem;
       color: var(--accent);
       flex-shrink: 0;
-      transition: all 0.3s ease;
-    }
-    
-    .feature-item:hover .feature-icon {
-      transform: scale(1.05);
-      background: rgba(76, 201, 240, 0.25);
     }
     
     .feature-content h3 {
@@ -957,26 +994,6 @@
       margin-top: auto;
     }
     
-    .service-card.popular-service {
-      border: 1px solid rgba(255, 204, 0, 0.3);
-      position: relative;
-      overflow: visible;
-    }
-    
-    .service-card.popular-service::after {
-      content: 'مميز';
-      position: absolute;
-      top: -8px;
-      left: 15px;
-      background: linear-gradient(135deg, var(--warning), #f59e0b);
-      color: #000;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 15px;
-      z-index: 3;
-    }
-    
     .loading {
       display: flex;
       flex-direction: column;
@@ -986,261 +1003,74 @@
       color: rgba(255, 255, 255, 0.7);
     }
     
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      border-left: 4px solid var(--primary);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: 10px;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
     /* Responsive Design - محسّن أكثر للهواتف */
     @media screen and (max-width: 768px) {
-      :root {
-        --header-height: 60px;
-      }
-      
-      header {
-        padding: 0 10px;
-        height: 60px;
-      }
-      
-      .header-content {
-        gap: 8px;
-      }
-      
-      .typing-text {
-        min-width: 100px;
-        height: 30px;
-      }
-      
-      .typing-text span {
-        font-size: 1rem;
-      }
-      
-      .user-info {
-        gap: 8px;
-      }
-      
-      .welcome-user {
-        font-size: 0.8rem;
-        max-width: 80px;
-      }
-      
-      .user-avatar {
-        width: 30px;
-        height: 30px;
-        font-size: 0.9rem;
-      }
-      
-      .logout-btn {
-        padding: 5px 10px;
-        font-size: 0.75rem;
-      }
-      
-      .login-container {
-        padding: 30px 20px;
+      .modal-content {
+        padding: 25px 20px;
         margin: 10px;
       }
       
-      .login-logo {
-        font-size: 2.8rem;
-      }
-      
-      .login-title {
+      .modal-title {
         font-size: 1.5rem;
+        line-height: 1.3;
       }
       
-      .location-container {
-        padding: 30px 20px;
+      .modal-subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
       }
       
-      .location-title {
-        font-size: 1.5rem;
+      .location-feature span {
+        font-size: 0.9rem;
       }
       
-      .location-buttons {
+      .modal-buttons {
         flex-direction: column;
       }
       
-      main {
+      .btn-primary, .btn-secondary {
+        min-width: 100%;
+        padding: 14px 20px;
+      }
+      
+      .location-features {
         padding: 15px;
-        margin-top: 60px;
       }
       
-      .hero {
-        padding: 25px 20px;
-        min-height: 170px;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      .welcome-message {
-        font-size: 1.8rem;
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-      
-      .service-card {
-        padding: 18px;
-      }
-      
-      .service-icon {
-        width: 55px;
-        height: 55px;
-        font-size: 1.5rem;
+      .location-feature {
+        gap: 10px;
+        margin-bottom: 10px;
       }
     }
     
     @media screen and (max-width: 480px) {
-      :root {
-        --header-height: 55px;
+      .modal-content {
+        padding: 20px 15px;
       }
       
-      header {
-        height: 55px;
-        padding: 0 8px;
-      }
-      
-      .typing-text {
-        min-width: 80px;
-        height: 25px;
-      }
-      
-      .typing-text span {
-        font-size: 0.9rem;
-      }
-      
-      .welcome-user {
-        font-size: 0.75rem;
-        max-width: 60px;
-        display: none; /* إخفاء النص في الشاشات الصغيرة جداً */
-      }
-      
-      .user-avatar {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8rem;
-      }
-      
-      .logout-btn {
-        padding: 4px 8px;
-        font-size: 0.7rem;
-      }
-      
-      .login-container {
-        padding: 25px 15px;
-      }
-      
-      .login-logo {
-        font-size: 2.2rem;
-      }
-      
-      .login-title {
+      .modal-title {
         font-size: 1.3rem;
       }
       
-      .location-container {
-        padding: 25px 15px;
-      }
-      
-      .location-title {
-        font-size: 1.3rem;
+      .modal-subtitle {
+        font-size: 0.95rem;
       }
       
       .location-icon {
         font-size: 3rem;
       }
       
-      main {
-        padding: 12px;
-        margin-top: 55px;
+      .location-feature span {
+        font-size: 0.85rem;
       }
       
-      .hero {
-        padding: 20px 15px;
-        min-height: 150px;
-      }
-      
-      .hero h1 {
-        font-size: 1.7rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      .welcome-message {
-        font-size: 1.5rem;
-        padding: 0 10px;
-      }
-      
-      .service-card {
-        padding: 16px;
-      }
-      
-      .service-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.4rem;
-      }
-      
-      .service-title {
-        font-size: 1.1rem;
-      }
-      
-      .service-btn {
-        padding: 7px 14px;
+      .guide-step span {
         font-size: 0.8rem;
       }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+      
+      .mandatory-text {
+        font-size: 0.8rem;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .service-card, .feature-item {
-      animation: fadeInUp 0.5s ease forwards;
-    }
-    
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.1);
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: rgba(67, 97, 238, 0.4);
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(67, 97, 238, 0.6);
     }
   </style>
 </head>
@@ -1261,69 +1091,88 @@
     <div class="version">الإصدار 2.3</div>
   </div>
 
-  <!-- شاشة طلب إذن الموقع -->
-  <div class="location-permission-screen" id="locationPermissionScreen">
-    <div class="location-container">
+  <!-- نافذة طلب إذن الموقع -->
+  <div class="location-modal" id="locationModal">
+    <div class="modal-content">
       <div class="location-icon">
         <i class="fas fa-map-marker-alt"></i>
       </div>
-      <h1 class="location-title">مشاركة الموقع مطلوبة</h1>
       
-      <div class="location-description">
-        نحتاج إلى إذنك للوصول إلى موقعك الجغرافي لتقديم أفضل خدمة ممكنة. هذا يساعدنا في:
-      </div>
+      <h1 class="modal-title">مشاركة الموقع مطلوبة للتسجيل</h1>
+      
+      <p class="modal-subtitle">
+        نحتاج إلى تحديد موقعك الجغرافي لتقديم أفضل خدمة ممكنة مخصصة لمنطقتك
+      </p>
       
       <div class="location-features">
         <div class="location-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>تحديد أقرب مكاتب الخدمة إليك</span>
+          <i class="fas fa-map-pin"></i>
+          <span>تحديد أقرب مكاتب الخدمة إليك وتوفير الوقت والجهد</span>
         </div>
         <div class="location-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>تقديم خدمات مخصصة لمنطقتك</span>
+          <i class="fas fa-shield-alt"></i>
+          <span>تعزيز أمان حسابك وحماية معاملاتك من الاحتيال</span>
         </div>
         <div class="location-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>تحسين تجربة المستخدم بشكل عام</span>
+          <i class="fas fa-bolt"></i>
+          <span>تقديم خدمات أسرع ومخصصة حسب موقعك الجغرافي</span>
         </div>
         <div class="location-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>ضمان أمان وحماية معاملاتك</span>
+          <i class="fas fa-headset"></i>
+          <span>دعم فني أفضل من خلال معرفة منطقتك ومدينتك</span>
         </div>
       </div>
       
-      <div class="location-description">
-        <strong>ملاحظة:</strong> موقعك سيستخدم فقط لأغراض الخدمة ولن يتم مشاركته مع أي جهات خارجية.
+      <div class="location-importance">
+        <div class="importance-title">📋 لماذا الموقع إجباري؟</div>
+        <div class="importance-text">
+          نظامنا مصمم لتقديم خدمات مخصصة حسب الموقع الجغرافي. بدون تحديد الموقع، لن نتمكن من تقديم الخدمات بشكل صحيح أو حماية حسابك بشكل كامل.
+        </div>
       </div>
       
-      <div class="location-buttons">
+      <div class="modal-buttons">
         <button class="btn-primary" id="allowLocationBtn">
-          <i class="fas fa-check"></i> الموافقة على المشاركة
+          <i class="fas fa-check-circle"></i>
+          <span>موافقة ومشاركة الموقع</span>
         </button>
-        <button class="btn-secondary" id="whyLocationBtn">
-          <i class="fas fa-question-circle"></i> لماذا نحتاج موقعك؟
+        <button class="btn-secondary" id="openSettingsBtn">
+          <i class="fas fa-cog"></i>
+          <span>فتح إعدادات الموقع</span>
         </button>
+      </div>
+      
+      <div class="mandatory-notice">
+        <div class="mandatory-text">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>مشاركة الموقع إلزامية لإنشاء حساب جديد في النظام</span>
+        </div>
       </div>
       
       <div class="location-error" id="locationError">
-        <i class="fas fa-exclamation-triangle"></i>
-        <span id="errorMessage">حدث خطأ في الحصول على الموقع. يرجى المحاولة مرة أخرى.</span>
+        <div class="error-message">
+          <i class="fas fa-exclamation-circle"></i>
+          <span id="errorMessage">حدث خطأ في الحصول على الموقع. يرجى المحاولة مرة أخرى.</span>
+        </div>
       </div>
       
-      <div class="location-instructions" id="locationInstructions">
-        <h4><i class="fas fa-info-circle"></i> كيفية تمكين الموقع:</h4>
-        <ul class="location-steps">
-          <li>
+      <div class="location-guide" id="locationGuide">
+        <div class="guide-title">📱 كيفية تمكين الموقع:</div>
+        <ul class="guide-steps">
+          <li class="guide-step">
             <i class="fas fa-mobile-alt"></i>
-            <span>في المتصفح: انقر على أيقونة القفل بجانب العنوان ← إعدادات الموقع ← السماح</span>
+            <span>في المتصفح: انقر على أيقونة القفل بجانب عنوان الموقع</span>
           </li>
-          <li>
-            <i class="fas fa-cog"></i>
-            <span>في الهاتف: الإعدادات ← الخصوصية ← خدمات الموقع ← تمكين</span>
+          <li class="guide-step">
+            <i class="fas fa-map-marker"></i>
+            <span>اختر "إعدادات الموقع" أو "Site settings"</span>
           </li>
-          <li>
+          <li class="guide-step">
+            <i class="fas fa-check"></i>
+            <span>غير الإعداد إلى "السماح" أو "Allow"</span>
+          </li>
+          <li class="guide-step">
             <i class="fas fa-redo"></i>
-            <span>أعد تحميل الصفحة بعد تمكين الإذن</span>
+            <span>أعد تحميل الصفحة بعد التمكين</span>
           </li>
         </ul>
       </div>
@@ -1462,7 +1311,7 @@
   </div>
 
   <script type="module">
-    // إعدادات Firebase للتسجيل (القاعدة الجديدة)
+    // إعدادات Firebase
     const authFirebaseConfig = {
       apiKey: "AIzaSyCzpxIaiiwy-Fxl8iDICAITfj8mpFrYWhk",
       authDomain: "iraq-b3faf.firebaseapp.com",
@@ -1473,7 +1322,6 @@
       measurementId: "G-BWMXLSKECR"
     };
 
-    // إعدادات Firebase للخدمات (القاعدة القديمة)
     const servicesFirebaseConfig = {
       apiKey: "AIzaSyDQES1QM4s9yDJ49hldDwI_ictXZDciPCk",
       authDomain: "ur111-824e3.firebaseapp.com",
@@ -1502,8 +1350,7 @@
       getDoc, 
       setDoc,
       collection,
-      addDoc,
-      updateDoc
+      addDoc
     } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
     // Initialize Firebase Apps
@@ -1516,18 +1363,18 @@
 
     // عناصر DOM
     const splashScreen = document.getElementById('splashScreen');
-    const locationPermissionScreen = document.getElementById('locationPermissionScreen');
+    const locationModal = document.getElementById('locationModal');
     const loginScreen = document.getElementById('loginScreen');
     const mainContent = document.getElementById('mainContent');
     const loadingProgress = document.getElementById('loadingProgress');
     const loadingText = document.getElementById('loadingText');
     
-    // عناصر شاشة الموقع
+    // عناصر نافذة الموقع
     const allowLocationBtn = document.getElementById('allowLocationBtn');
-    const whyLocationBtn = document.getElementById('whyLocationBtn');
+    const openSettingsBtn = document.getElementById('openSettingsBtn');
     const locationError = document.getElementById('locationError');
     const errorMessage = document.getElementById('errorMessage');
-    const locationInstructions = document.getElementById('locationInstructions');
+    const locationGuide = document.getElementById('locationGuide');
     
     // عناصر نظام التسجيل
     const authForm = document.getElementById('authForm');
@@ -1551,6 +1398,7 @@
     let isLoginMode = true;
     let current = 0;
     let userLocation = null;
+    let locationAttempts = 0;
 
     // دالة لتحديث شريط التقدم
     function updateProgress(percent) {
@@ -1570,13 +1418,56 @@
     // التحقق من إذن الموقع
     function checkLocationPermission() {
       if (!navigator.geolocation) {
-        // المتصفح لا يدعم تحديد الموقع
         showLocationError('المتصفح لا يدعم تحديد الموقع. يرجى استخدام متصفح حديث.');
+        showLocationModal();
         return;
       }
       
-      // عرض شاشة طلب إذن الموقع
-      locationPermissionScreen.style.display = 'flex';
+      // التحقق من الإذن الحالي
+      navigator.permissions.query({name: 'geolocation'}).then((result) => {
+        if (result.state === 'granted') {
+          // الإذن ممنوح مسبقاً
+          getUserLocation().then(location => {
+            userLocation = location;
+            checkExistingAuth();
+          }).catch(error => {
+            showLocationModal();
+          });
+        } else if (result.state === 'prompt') {
+          // يحتاج إلى طلب الإذن
+          showLocationModal();
+        } else {
+          // الإذن مرفوض
+          showLocationModal();
+          locationGuide.classList.add('active');
+        }
+      });
+    }
+
+    // عرض نافذة الموقع
+    function showLocationModal() {
+      locationModal.classList.add('active');
+    }
+
+    // إخفاء نافذة الموقع
+    function hideLocationModal() {
+      locationModal.classList.remove('active');
+    }
+
+    // إظهار خطأ الموقع
+    function showLocationError(message) {
+      errorMessage.textContent = message;
+      locationError.classList.add('active');
+      locationAttempts++;
+      
+      if (locationAttempts >= 2) {
+        locationGuide.classList.add('active');
+      }
+    }
+
+    // إخفاء خطأ الموقع
+    function hideLocationError() {
+      locationError.classList.remove('active');
     }
 
     // دالة للحصول على الموقع الحقيقي
@@ -1589,7 +1480,7 @@
 
         const options = {
           enableHighAccuracy: true,
-          timeout: 10000,
+          timeout: 15000,
           maximumAge: 60000
         };
 
@@ -1622,10 +1513,10 @@
                 errorMsg = 'تم رفض إذن الموقع. يرجى السماح بالوصول إلى الموقع للمتابعة.';
                 break;
               case error.POSITION_UNAVAILABLE:
-                errorMsg = 'معلومات الموقع غير متاحة.';
+                errorMsg = 'معلومات الموقع غير متاحة. تأكد من تشغيل خدمة الموقع.';
                 break;
               case error.TIMEOUT:
-                errorMsg = 'انتهت مهلة طلب الموقع.';
+                errorMsg = 'انتهت مهلة طلب الموقع. يرجى المحاولة مرة أخرى.';
                 break;
             }
             reject(new Error(errorMsg));
@@ -1652,32 +1543,32 @@
       }
     }
 
-    // دالة لعرض خطأ الموقع
-    function showLocationError(message) {
-      errorMessage.textContent = message;
-      locationError.style.display = 'block';
-      locationInstructions.style.display = 'block';
-    }
-
-    // دالة لإخفاء خطأ الموقع
-    function hideLocationError() {
-      locationError.style.display = 'none';
-      locationInstructions.style.display = 'none';
+    // فتح إعدادات الموقع في المتصفح
+    function openLocationSettings() {
+      if (navigator.userAgent.includes('Chrome')) {
+        window.open('chrome://settings/content/location', '_blank');
+      } else if (navigator.userAgent.includes('Firefox')) {
+        window.open('about:preferences#privacy', '_blank');
+      } else if (navigator.userAgent.includes('Safari')) {
+        window.open('x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices', '_blank');
+      } else {
+        // للمتصفحات الأخرى، نعطي تعليمات
+        locationGuide.classList.add('active');
+      }
     }
 
     // التحقق من المصادقة الحالية
     function checkExistingAuth() {
       const user = auth.currentUser;
       if (user) {
-        // يوجد مستخدم مسجل، تحميل البيانات مباشرة
         handleUserAuth(user);
       } else {
-        // لا يوجد مستخدم مسجل، عرض شاشة التسجيل
         loginScreen.style.display = 'flex';
+        hideLocationModal();
       }
     }
 
-    // محاكاة تحميل محسنة مع معالجة الأخطاء
+    // محاكاة تحميل
     function simulateLoading() {
       let progress = 0;
       const interval = setInterval(() => {
@@ -1687,14 +1578,9 @@
           clearInterval(interval);
           updateProgress(progress);
           loadingText.textContent = "جاهز!";
-          
-          // تأكيد إخفاء شاشة الافتتاح
-          setTimeout(() => {
-            hideSplashScreen();
-          }, 500);
+          setTimeout(() => hideSplashScreen(), 500);
         } else {
           updateProgress(progress);
-          
           if (progress >= 30) loadingText.textContent = "جاري تحميل البيانات...";
           if (progress >= 70) loadingText.textContent = "جاري تهيئة النظام...";
           if (progress >= 90) loadingText.textContent = "جاهز للتسجيل...";
@@ -1702,7 +1588,7 @@
       }, 300);
     }
 
-    // بدء محاكاة التحميل
+    // بدء التحميل
     simulateLoading();
 
     // دالة لعرض التنبيهات
@@ -1728,20 +1614,26 @@
         submitText.textContent = 'إنشاء حساب';
         toggleText.textContent = 'لديك حساب بالفعل؟ ';
         toggleForm.textContent = 'تسجيل الدخول';
+        
+        // عند التبديل إلى إنشاء حساب، نتحقق من الموقع
+        if (!userLocation) {
+          showAlert('يجب السماح بالوصول إلى الموقع أولاً لإنشاء حساب جديد', 'warning');
+          showLocationModal();
+          return;
+        }
       }
       
       authForm.reset();
       alertContainer.innerHTML = '';
-      rememberMe.checked = true; // افتراضيًا مفعل
+      rememberMe.checked = true;
     }
 
-    // دالة للتحقق من وجود مستخدم في قاعدة البيانات
+    // دالة للتحقق من وجود مستخدم
     async function checkUserExists(userId) {
       try {
         const userDoc = await getDoc(doc(authDb, "users", userId));
         return userDoc.exists();
       } catch (error) {
-        console.error('Error checking user existence:', error);
         return false;
       }
     }
@@ -1749,14 +1641,12 @@
     // دالة للتعامل مع مصادقة المستخدم
     async function handleUserAuth(user) {
       try {
-        // التحقق من وجود المستخدم في قاعدة البيانات
         const userExists = await checkUserExists(user.uid);
         if (!userExists) {
           await signOut(auth);
           throw new Error('الحساب غير موجود في النظام');
         }
         
-        // التحقق من حالة الموافقة
         const userDoc = await getDoc(doc(authDb, "users", user.uid));
         const userData = userDoc.data();
         
@@ -1765,14 +1655,12 @@
           throw new Error('حسابك قيد الانتظار. يرجى انتظار الموافقة من الإدارة');
         }
         
-        // تسجيل الدخول الناجح
         loginScreen.style.display = 'none';
         mainContent.style.display = 'flex';
         updateUserUI(userData);
         loadButtonsData();
         
       } catch (error) {
-        console.error('Error handling user auth:', error);
         loginScreen.style.display = 'flex';
         showAlert(error.message, 'warning');
       }
@@ -1781,7 +1669,6 @@
     // دالة لتسجيل الدخول
     async function loginUser(email, password, remember) {
       try {
-        // تعيين استمرارية الجلسة بناءً على خيار "تذكرني"
         const persistence = remember ? browserLocalPersistence : browserSessionPersistence;
         await setPersistence(auth, persistence);
         
@@ -1793,35 +1680,27 @@
         
       } catch (error) {
         let errorMessage = 'حدث خطأ أثناء تسجيل الدخول';
-        
         switch (error.code) {
-          case 'auth/invalid-email':
-            errorMessage = 'البريد الإلكتروني غير صحيح';
-            break;
-          case 'auth/user-disabled':
-            errorMessage = 'هذا الحساب معطل';
-            break;
-          case 'auth/user-not-found':
-            errorMessage = 'لا يوجد حساب بهذا البريد الإلكتروني';
-            break;
-          case 'auth/wrong-password':
-            errorMessage = 'كلمة المرور غير صحيحة';
-            break;
-          default:
-            errorMessage = error.message || errorMessage;
+          case 'auth/invalid-email': errorMessage = 'البريد الإلكتروني غير صحيح'; break;
+          case 'auth/user-disabled': errorMessage = 'هذا الحساب معطل'; break;
+          case 'auth/user-not-found': errorMessage = 'لا يوجد حساب بهذا البريد الإلكتروني'; break;
+          case 'auth/wrong-password': errorMessage = 'كلمة المرور غير صحيحة'; break;
+          default: errorMessage = error.message || errorMessage;
         }
-        
         throw new Error(errorMessage);
       }
     }
 
-    // دالة لتسجيل مستخدم جديد مع حفظ الموقع
+    // دالة لتسجيل مستخدم جديد مع الموقع
     async function registerUser(email, password) {
       try {
+        if (!userLocation) {
+          throw new Error('يجب السماح بالوصول إلى الموقع لإنشاء حساب جديد');
+        }
+
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         
-        // حفظ بيانات المستخدم في Firestore مع الموقع
         const userData = {
           username: email.split('@')[0],
           email: email,
@@ -1830,25 +1709,23 @@
           approvedDate: null,
           approvedBy: null,
           createdAt: new Date().toISOString(),
-          location: userLocation // حفظ بيانات الموقع
+          location: userLocation
         };
         
         await setDoc(doc(authDb, "users", user.uid), userData);
         
-        // إضافة طلب انتظار للموافقة
         await addDoc(collection(authDb, "pending_approvals"), {
           userId: user.uid,
           username: email.split('@')[0],
           email: email,
           requestDate: new Date().toISOString(),
           status: 'pending',
-          location: userLocation, // إضافة الموقع لطلب الموافقة
+          location: userLocation,
           createdAt: new Date().toISOString()
         });
         
         showAlert('تم إنشاء الحساب بنجاح! يرجى انتظار الموافقة من الإدارة', 'success');
         
-        // تسجيل الخروج تلقائياً بعد إنشاء الحساب
         setTimeout(async () => {
           await signOut(auth);
           toggleAuthMode();
@@ -1856,21 +1733,12 @@
         
       } catch (error) {
         let errorMessage = 'حدث خطأ أثناء إنشاء الحساب';
-        
         switch (error.code) {
-          case 'auth/email-already-in-use':
-            errorMessage = 'هذا البريد الإلكتروني مستخدم بالفعل';
-            break;
-          case 'auth/invalid-email':
-            errorMessage = 'البريد الإلكتروني غير صحيح';
-            break;
-          case 'auth/weak-password':
-            errorMessage = 'كلمة المرور ضعيفة. يجب أن تكون 6 أحرف على الأقل';
-            break;
-          default:
-            errorMessage = error.message || errorMessage;
+          case 'auth/email-already-in-use': errorMessage = 'هذا البريد الإلكتروني مستخدم بالفعل'; break;
+          case 'auth/invalid-email': errorMessage = 'البريد الإلكتروني غير صحيح'; break;
+          case 'auth/weak-password': errorMessage = 'كلمة المرور ضعيفة. يجب أن تكون 6 أحرف على الأقل'; break;
+          default: errorMessage = error.message || errorMessage;
         }
-        
         throw new Error(errorMessage);
       }
     }
@@ -1883,53 +1751,14 @@
       welcomeMessage.textContent = `مرحباً ${displayName} في مكتب أور الإلكتروني`;
     }
 
-    // دالة للحصول على الأيقونة المناسبة بناءً على اسم الخدمة
-    function getIconForService(serviceName) {
-      const name = serviceName.toLowerCase();
-      
-      if (name.includes('دفع') || name.includes('مال') || name.includes('دفعة') || name.includes('فاتورة')) 
-        return 'fas fa-credit-card';
-      if (name.includes('استعلام') || name.includes('سؤال') || name.includes('معلومات')) 
-        return 'fas fa-info-circle';
-      if (name.includes('طلب') || name.includes('احتياج') || name.includes('شراء')) 
-        return 'fas fa-clipboard-list';
-      if (name.includes('تواصل') || name.includes('اتصال') || name.includes('دعم')) 
-        return 'fas fa-headset';
-      if (name.includes('حجز') || name.includes('موعد') || name.includes('مقابلة')) 
-        return 'fas fa-calendar-check';
-      if (name.includes('تسجيل') || name.includes('حساب') || name.includes('مستخدم')) 
-        return 'fas fa-user-plus';
-      
-      return 'fas fa-concierge-bell';
-    }
-
-    // دالة لإنشاء وصف عشوائي للخدمة
-    function generateServiceDescription(serviceName) {
-      const descriptions = [
-        "خدمة سريعة وآمنة لتلبية احتياجاتك",
-        "إنجاز في أسرع وقت مع ضمان الجودة",
-        "خدمة متكاملة بدعم فني مستمر",
-        "حلول مبتكرة لمتطلباتك الإلكترونية",
-        "تجربة مستخدم متميزة وسهلة الاستخدام",
-        "دعم فني متاح على مدار الساعة",
-        "أسعار تنافسية وجودة عالية",
-        "حلول متكاملة لجميع احتياجاتك"
-      ];
-      return descriptions[Math.floor(Math.random() * descriptions.length)];
-    }
-
-    // دالة لتحميل الخدمات من Firebase
+    // دالة لتحميل الخدمات
     async function loadButtonsData() {
       try {
         const docRef = doc(servicesDb, "serviceControl", "buttonsData");
         const snapshot = await getDoc(docRef);
         const data = snapshot.exists() ? snapshot.data().buttons : [];
-        
-        console.log("تم تحميل البيانات من قاعدة الخدمات:", data);
-        
         renderButtons(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error("Firebase load error:", err);
         buttonsContainer.innerHTML = '<p style="color:lightgray; text-align:center; padding: 20px;">حدث خطأ في تحميل الخدمات.</p>';
       }
     }
@@ -1937,7 +1766,6 @@
     // دالة لعرض الخدمات
     function renderButtons(buttonsData) {
       buttonsContainer.innerHTML = '';
-      
       if (!buttonsData.length) {
         buttonsContainer.innerHTML = '<p style="color:lightgray; text-align:center; padding: 20px;">لا توجد خدمات حالياً.</p>';
         return;
@@ -1951,73 +1779,23 @@
         
         const serviceCard = document.createElement('div');
         serviceCard.className = 'service-card';
-        serviceCard.style.animationDelay = `${index * 0.1}s`;
+        serviceCard.innerHTML = `
+          <div class="service-icon">
+            <i class="fas fa-concierge-bell"></i>
+          </div>
+          <h3 class="service-title">${btn.name || 'خدمة'}</h3>
+          <p class="service-description">${btn.description || 'خدمة متميزة من مكتب أور'}</p>
+          <div class="service-action">
+            <button class="service-btn">${btn.paused ? 'غير متاح' : 'استخدم الخدمة'} <i class="fas fa-arrow-left"></i></button>
+            <div class="service-status">
+              <div class="status-dot ${btn.paused ? 'offline' : ''}"></div>
+              <span>${btn.paused ? 'غير متاح' : 'متاح الآن'}</span>
+            </div>
+          </div>
+        `;
         
-        if (btn.popular) {
-          serviceCard.classList.add('popular-service');
-        }
-        
-        const serviceIcon = document.createElement('div');
-        serviceIcon.className = 'service-icon';
-        const iconElement = document.createElement('i');
-        iconElement.className = getIconForService(btn.name || 'خدمة');
-        serviceIcon.appendChild(iconElement);
-        
-        const serviceTitle = document.createElement('h3');
-        serviceTitle.className = 'service-title';
-        serviceTitle.textContent = btn.name || 'خدمة';
-        
-        const serviceDescription = document.createElement('p');
-        serviceDescription.className = 'service-description';
-        serviceDescription.textContent = btn.description || generateServiceDescription(btn.name || 'خدمة');
-        
-        const serviceAction = document.createElement('div');
-        serviceAction.className = 'service-action';
-        
-        const serviceBtn = document.createElement('button');
-        serviceBtn.className = 'service-btn';
-        serviceBtn.innerHTML = `${btn.paused ? 'غير متاح' : 'استخدم الخدمة'} <i class="fas fa-arrow-left"></i>`;
-        
-        const serviceStatus = document.createElement('div');
-        serviceStatus.className = 'service-status';
-        const statusDot = document.createElement('div');
-        statusDot.className = `status-dot ${btn.paused ? 'offline' : ''}`;
-        const statusText = document.createElement('span');
-        statusText.textContent = btn.paused ? 'غير متاح' : 'متاح الآن';
-        
-        serviceStatus.appendChild(statusDot);
-        serviceStatus.appendChild(statusText);
-        
-        serviceAction.appendChild(serviceBtn);
-        serviceAction.appendChild(serviceStatus);
-        
-        serviceCard.appendChild(serviceIcon);
-        serviceCard.appendChild(serviceTitle);
-        serviceCard.appendChild(serviceDescription);
-        serviceCard.appendChild(serviceAction);
-        
-        if (!btn.paused) {
-          serviceCard.onclick = () => btn.url && window.open(btn.url, '_blank');
-          serviceBtn.onclick = (e) => {
-            e.stopPropagation();
-            btn.url && window.open(btn.url, '_blank');
-          };
-        } else {
-          serviceCard.style.cursor = 'not-allowed';
-          serviceCard.style.opacity = '0.7';
-          serviceBtn.style.background = 'var(--gray)';
-          serviceBtn.style.cursor = 'not-allowed';
-          
-          serviceCard.onclick = (e) => {
-            e.preventDefault();
-            alert('عذراً، هذه الخدمة مؤقتاً غير متوفرة');
-          };
-          
-          serviceBtn.onclick = (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            alert('عذراً، هذه الخدمة مؤقتاً غير متوفرة');
-          };
+        if (!btn.paused && btn.url) {
+          serviceCard.onclick = () => window.open(btn.url, '_blank');
         }
         
         servicesGrid.appendChild(serviceCard);
@@ -2026,30 +1804,29 @@
       buttonsContainer.appendChild(servicesGrid);
     }
 
-    // أحداث شاشة الموقع
+    // أحداث نافذة الموقع
     allowLocationBtn.addEventListener('click', async () => {
       try {
         allowLocationBtn.disabled = true;
-        allowLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الحصول على الموقع...';
+        allowLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تحديد الموقع...';
+        hideLocationError();
         
         userLocation = await getUserLocation();
-        
-        // إخفاء شاشة الموقع وعرض شاشة التسجيل
-        locationPermissionScreen.style.display = 'none';
+        hideLocationModal();
         checkExistingAuth();
         
       } catch (error) {
         showLocationError(error.message);
         allowLocationBtn.disabled = false;
-        allowLocationBtn.innerHTML = '<i class="fas fa-check"></i> الموافقة على المشاركة';
+        allowLocationBtn.innerHTML = '<i class="fas fa-check-circle"></i> موافقة ومشاركة الموقع';
       }
     });
 
-    whyLocationBtn.addEventListener('click', () => {
-      locationInstructions.style.display = locationInstructions.style.display === 'none' ? 'block' : 'none';
+    openSettingsBtn.addEventListener('click', () => {
+      openLocationSettings();
     });
 
-    // معالجة إرسال النموذج
+    // أحداث النموذج
     authForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -2062,11 +1839,6 @@
         return;
       }
       
-      if (password.length < 6) {
-        showAlert('كلمة المرور يجب أن تكون 6 أحرف على الأقل');
-        return;
-      }
-      
       submitText.style.display = 'none';
       formSpinner.style.display = 'inline-block';
       submitBtn.disabled = true;
@@ -2075,10 +1847,6 @@
         if (isLoginMode) {
           await loginUser(email, password, remember);
         } else {
-          // للتسجيل: التأكد من وجود الموقع أولاً
-          if (!userLocation) {
-            throw new Error('يجب السماح بالوصول إلى الموقع لإنشاء حساب جديد');
-          }
           await registerUser(email, password);
         }
       } catch (error) {
@@ -2090,7 +1858,6 @@
       }
     });
 
-    // أحداث النقر
     toggleForm.addEventListener('click', toggleAuthMode);
     
     logoutBtn.addEventListener('click', async () => {
@@ -2098,7 +1865,6 @@
         await signOut(auth);
         showAlert('تم تسجيل الخروج بنجاح', 'success');
       } catch (error) {
-        console.error('Error signing out:', error);
         showAlert('حدث خطأ أثناء تسجيل الخروج');
       }
     });
@@ -2117,12 +1883,10 @@
     const welcomeMessages = [
       "مرحباً بكم في مكتب أور الإلكتروني",
       "نحن هنا لخدمتكم على مدار الساعة",
-      "أفضل الخدمات الإلكترونية بين يديك",
-      "نسعى دائماً لرضاكم وتلبية احتياجاتكم"
+      "أفضل الخدمات الإلكترونية بين يديك"
     ];
     
     let welcomeIndex = 0;
-    
     function changeWelcomeMessage() {
       welcomeMessage.style.opacity = 0;
       setTimeout(() => {
@@ -2131,7 +1895,6 @@
         welcomeMessage.style.opacity = 1;
       }, 500);
     }
-    
     setInterval(changeWelcomeMessage, 5000);
 
     // حركة الشريط العلوي
@@ -2141,21 +1904,6 @@
       current = (current + 1) % texts.length;
       texts[current].classList.add('active');
     }, 4000);
-
-    // إضافة أيقونة لتسجيل الخروج في الهواتف
-    const logoutText = logoutBtn.querySelector('.logout-text');
-    window.addEventListener('resize', () => {
-      if (window.innerWidth <= 480) {
-        logoutText.style.display = 'none';
-      } else {
-        logoutText.style.display = 'inline';
-      }
-    });
-
-    // تطبيق التغيير مباشرة عند التحميل
-    if (window.innerWidth <= 480) {
-      logoutText.style.display = 'none';
-    }
   </script>
 </body>
 </html>

@@ -16,17 +16,17 @@
 
   <style>
     :root {
-      --primary: #4361ee;
-      --primary-dark: #3a0ca3;
-      --secondary: #7209b7;
-      --accent: #4cc9f0;
-      --dark: #0d1b2a;
-      --dark-light: #1b263b;
-      --light: #f8f9fa;
-      --success: #4ade80;
-      --warning: #facc15;
-      --danger: #f87171;
-      --gray: #6b7280;
+      --primary: #8b5cf6;
+      --primary-dark: #7c3aed;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --light: #f8fafc;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gray: #64748b;
       --card-bg: rgba(255, 255, 255, 0.08);
       --card-border: rgba(255, 255, 255, 0.12);
       --header-height: 60px;
@@ -76,7 +76,7 @@
     .logo {
       font-size: 3.5rem;
       font-weight: 800;
-      background: linear-gradient(90deg, #4cc9f0, #4361ee, #7209b7);
+      background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -95,7 +95,7 @@
     .loading-progress {
       height: 100%;
       width: 0%;
-      background: linear-gradient(to right, #4cc9f0, #4361ee);
+      background: linear-gradient(to right, var(--accent), var(--primary));
       border-radius: 2px;
       transition: width 0.3s ease;
     }
@@ -103,426 +103,6 @@
     .loading-text {
       font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.7);
-    }
-    
-    /* نافذة الموقع المنبثقة - مصغرة للهواتف */
-    .location-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      padding: 15px;
-      backdrop-filter: blur(10px);
-    }
-    
-    .location-modal.active {
-      display: flex;
-      animation: fadeIn 0.3s ease;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    .modal-content {
-      background: linear-gradient(135deg, rgba(26, 36, 61, 0.98), rgba(13, 27, 42, 0.95));
-      border-radius: 20px;
-      padding: 25px 20px;
-      width: 100%;
-      max-width: 400px;
-      max-height: 85vh;
-      overflow-y: auto;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      text-align: center;
-      position: relative;
-    }
-    
-    .location-icon {
-      font-size: 3rem;
-      color: var(--accent);
-      margin-bottom: 15px;
-      animation: bounce 2s infinite;
-    }
-    
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-8px); }
-      60% { transform: translateY(-4px); }
-    }
-    
-    .modal-title {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-      color: white;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-    
-    .modal-subtitle {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
-    
-    .location-features {
-      background: rgba(76, 201, 240, 0.1);
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: 1px solid rgba(76, 201, 240, 0.2);
-    }
-    
-    .location-feature {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      font-size: 0.85rem;
-    }
-    
-    .location-feature:last-child {
-      margin-bottom: 0;
-    }
-    
-    .location-feature i {
-      color: var(--success);
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    
-    .location-feature span {
-      color: rgba(255, 255, 255, 0.9);
-      text-align: right;
-      flex: 1;
-      line-height: 1.3;
-    }
-    
-    .location-importance {
-      background: rgba(250, 204, 21, 0.1);
-      border: 1px solid rgba(250, 204, 21, 0.2);
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 20px;
-      font-size: 0.85rem;
-    }
-    
-    .importance-title {
-      color: var(--warning);
-      font-weight: 600;
-      margin-bottom: 5px;
-      font-size: 0.9rem;
-    }
-    
-    .importance-text {
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.4;
-    }
-    
-    .modal-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-    
-    .btn-primary {
-      padding: 14px 20px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
-    }
-    
-    .btn-secondary {
-      padding: 12px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 10px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .btn-primary:active {
-      transform: scale(0.98);
-    }
-    
-    .btn-secondary:active {
-      transform: scale(0.98);
-    }
-    
-    .btn-primary:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    
-    .mandatory-notice {
-      background: rgba(248, 113, 113, 0.1);
-      border: 1px solid var(--danger);
-      border-radius: 8px;
-      padding: 10px;
-      margin-top: 15px;
-    }
-    
-    .mandatory-text {
-      color: var(--danger);
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
-    
-    .location-error {
-      background: rgba(248, 113, 113, 0.1);
-      border: 1px solid var(--danger);
-      border-radius: 8px;
-      padding: 12px;
-      margin-top: 15px;
-      display: none;
-    }
-    
-    .location-error.active {
-      display: block;
-      animation: slideDown 0.3s ease;
-    }
-    
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .error-message {
-      color: var(--danger);
-      font-size: 0.8rem;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .location-guide {
-      background: rgba(76, 201, 240, 0.1);
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      padding: 12px;
-      margin-top: 15px;
-      display: none;
-    }
-    
-    .location-guide.active {
-      display: block;
-    }
-    
-    .guide-title {
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 8px;
-      font-size: 0.9rem;
-    }
-    
-    .guide-steps {
-      list-style: none;
-      padding: 0;
-      text-align: right;
-    }
-    
-    .guide-step {
-      margin-bottom: 6px;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.8rem;
-    }
-    
-    .guide-step i {
-      color: var(--accent);
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-    
-    /* شاشة تسجيل الدخول */
-    .login-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(160deg, var(--dark), var(--dark-light));
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 998;
-      padding: 15px;
-    }
-    
-    .login-container {
-      background: rgba(26, 36, 61, 0.95);
-      border-radius: 20px;
-      padding: 30px 25px;
-      width: 100%;
-      max-width: 400px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-    
-    .login-logo {
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #4cc9f0, #4361ee, #7209b7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 10px;
-    }
-    
-    .login-title {
-      font-size: 1.4rem;
-      margin-bottom: 25px;
-      color: white;
-      font-weight: 700;
-    }
-    
-    .form-group {
-      margin-bottom: 15px;
-      text-align: right;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.9rem;
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 12px 15px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.05);
-      color: white;
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
-    }
-    
-    .remember-me {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
-      justify-content: flex-end;
-      font-size: 0.9rem;
-    }
-    
-    .submit-btn {
-      width: 100%;
-      padding: 14px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .submit-btn:active {
-      transform: scale(0.98);
-    }
-    
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    
-    .toggle-form {
-      color: var(--accent);
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    
-    .alert {
-      padding: 10px 12px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      font-size: 0.8rem;
-      text-align: right;
-    }
-    
-    .alert-success {
-      background: rgba(74, 222, 128, 0.2);
-      color: var(--success);
-      border: 1px solid var(--success);
-    }
-    
-    .alert-danger {
-      background: rgba(248, 113, 113, 0.2);
-      color: var(--danger);
-      border: 1px solid var(--danger);
-    }
-    
-    .alert-warning {
-      background: rgba(250, 204, 21, 0.2);
-      color: var(--warning);
-      border: 1px solid var(--warning);
-    }
-    
-    .spinner {
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-left: 2px solid white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
     
     /* المحتوى الرئيسي */
@@ -538,7 +118,7 @@
       left: 0;
       right: 0;
       height: var(--header-height);
-      background: rgba(26, 36, 61, 0.95);
+      background: rgba(30, 41, 59, 0.95);
       backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
@@ -576,7 +156,7 @@
       text-align: center;
       font-size: 1rem;
       font-weight: 700;
-      background: linear-gradient(to right, #fff, #c0d4ff);
+      background: linear-gradient(to right, #fff, #c4b5fd);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -594,18 +174,6 @@
       flex-shrink: 0;
     }
     
-    .welcome-user {
-      font-size: 0.85rem;
-      font-weight: 600;
-      background: linear-gradient(to right, #4cc9f0, #4361ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 80px;
-    }
-    
     .user-avatar {
       width: 32px;
       height: 32px;
@@ -618,20 +186,6 @@
       font-size: 0.9rem;
     }
     
-    .logout-btn {
-      background: rgba(248, 113, 113, 0.2);
-      color: var(--danger);
-      border: 1px solid var(--danger);
-      padding: 6px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      font-size: 0.75rem;
-      white-space: nowrap;
-    }
-    
     main {
       margin-top: var(--header-height);
       flex: 1;
@@ -641,57 +195,33 @@
     
     .welcome-text {
       text-align: center;
-      margin-bottom: 20px;
-      min-height: 60px;
+      margin-bottom: 15px;
+      min-height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
     .welcome-message {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #4cc9f0, #4361ee, #7209b7);
+      background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
     
-    .hero {
-      background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(114, 9, 183, 0.2));
-      border-radius: 15px;
-      padding: 25px 20px;
-      text-align: center;
-      margin-bottom: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-    }
-    
-    .hero h1 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      background: linear-gradient(to right, #fff, #a0bfff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .hero p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-    
-    .features-section {
+    .services-section {
       background: rgba(255, 255, 255, 0.03);
       border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 20px;
+      padding: 15px;
+      margin-bottom: 15px;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .section-title {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
       text-align: center;
       color: white;
       font-weight: 700;
@@ -699,126 +229,95 @@
     
     .services-grid {
       display: grid;
-      gap: 15px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 15px;
     }
     
     .service-card {
       background: var(--card-bg);
       border-radius: 12px;
-      padding: 15px;
+      padding: 15px 10px;
       border: 1px solid var(--card-border);
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100px;
+      justify-content: center;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+      border-color: rgba(139, 92, 246, 0.4);
     }
     
     .service-card:active {
       transform: scale(0.98);
     }
     
-    .service-icon {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-    
     .service-title {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       color: white;
-    }
-    
-    .service-description {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.85rem;
-      line-height: 1.4;
-      margin-bottom: 12px;
+      line-height: 1.3;
     }
     
     .service-action {
+      width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
     }
     
+    /* تصميم الأزرار المصغرة */
     .service-btn {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border: none;
-      padding: 8px 15px;
+      padding: 8px 12px;
       border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-    }
-    
-    .service-status {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--success);
-    }
-    
-    .features-grid {
-      display: grid;
-      gap: 15px;
-    }
-    
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 15px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-    }
-    
-    .feature-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(76, 201, 240, 0.15);
-      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 8px rgba(139, 92, 246, 0.3);
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
-      color: var(--accent);
-      flex-shrink: 0;
     }
     
-    .feature-content h3 {
-      font-size: 1rem;
-      margin-bottom: 5px;
-      color: white;
-      font-weight: 600;
+    .service-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(139, 92, 246, 0.4);
     }
     
-    .feature-content p {
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.4;
+    .service-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .service-btn.disabled {
+      background: linear-gradient(135deg, var(--gray), #475569);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    
+    .service-btn.disabled:hover {
+      transform: none;
+      box-shadow: 0 3px 8px rgba(100, 116, 139, 0.3);
     }
     
     footer {
       text-align: center;
-      padding: 20px;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.7);
+      padding: 15px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
       background: rgba(0, 0, 0, 0.2);
       border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
@@ -828,40 +327,53 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 30px;
+      padding: 20px;
       color: rgba(255, 255, 255, 0.7);
     }
     
-    /* تحسين التمرير */
-    .modal-content::-webkit-scrollbar {
-      width: 4px;
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-left: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
     
-    .modal-content::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    
-    .modal-content::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 2px;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     
     /* تحسينات للشاشات الصغيرة */
-    @media (max-width: 360px) {
-      .modal-content {
-        padding: 20px 15px;
+    @media (max-width: 480px) {
+      .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 8px;
       }
       
-      .modal-title {
+      .service-card {
+        padding: 12px 8px;
+        min-height: 90px;
+      }
+      
+      .service-title {
+        font-size: 0.85rem;
+      }
+      
+      .service-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+      }
+      
+      .welcome-message {
         font-size: 1.2rem;
       }
-      
-      .location-feature {
-        font-size: 0.8rem;
-      }
-      
-      .welcome-user {
-        display: none;
+    }
+    
+    @media (max-width: 360px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     
@@ -884,129 +396,11 @@
     <div class="loading-text" id="loadingText">جاري التحميل...</div>
   </div>
 
-  <!-- نافذة طلب إذن الموقع -->
-  <div class="location-modal" id="locationModal">
-    <div class="modal-content">
-      <div class="location-icon">
-        <i class="fas fa-map-marker-alt"></i>
-      </div>
-      
-      <h1 class="modal-title">مشاركة الموقع مطلوبة</h1>
-      
-      <p class="modal-subtitle">
-        نحتاج إلى تحديد موقعك الجغرافي لتقديم أفضل خدمة مخصصة
-      </p>
-      
-      <div class="location-features">
-        <div class="location-feature">
-          <i class="fas fa-map-pin"></i>
-          <span>تحديد أقرب مكاتب الخدمة إليك</span>
-        </div>
-        <div class="location-feature">
-          <i class="fas fa-shield-alt"></i>
-          <span>تعزيز أمان حسابك وحمايته</span>
-        </div>
-        <div class="location-feature">
-          <i class="fas fa-bolt"></i>
-          <span>خدمات أسرع ومخصصة لموقعك</span>
-        </div>
-      </div>
-      
-      <div class="location-importance">
-        <div class="importance-title">لماذا الموقع إجباري؟</div>
-        <div class="importance-text">
-          نظامنا مصمم لتقديم خدمات مخصصة حسب الموقع الجغرافي. بدون تحديد الموقع، لن نتمكن من تقديم الخدمات بشكل صحيح.
-        </div>
-      </div>
-      
-      <div class="modal-buttons">
-        <button class="btn-primary" id="allowLocationBtn">
-          <i class="fas fa-check-circle"></i>
-          موافقة على المشاركة
-        </button>
-        <button class="btn-secondary" id="openSettingsBtn">
-          <i class="fas fa-cog"></i>
-          فتح إعدادات الموقع
-        </button>
-      </div>
-      
-      <div class="mandatory-notice">
-        <div class="mandatory-text">
-          <i class="fas fa-exclamation-triangle"></i>
-          مشاركة الموقع إلزامية لإنشاء حساب جديد
-        </div>
-      </div>
-      
-      <div class="location-error" id="locationError">
-        <div class="error-message" id="errorMessage">
-          <i class="fas fa-exclamation-circle"></i>
-          حدث خطأ في الحصول على الموقع
-        </div>
-      </div>
-      
-      <div class="location-guide" id="locationGuide">
-        <div class="guide-title">كيفية تمكين الموقع:</div>
-        <ul class="guide-steps">
-          <li class="guide-step">
-            <i class="fas fa-mobile-alt"></i>
-            <span>في المتصفح: انقر على أيقونة القفل بجانب العنوان</span>
-          </li>
-          <li class="guide-step">
-            <i class="fas fa-map-marker"></i>
-            <span>اختر "إعدادات الموقع" أو "Site settings"</span>
-          </li>
-          <li class="guide-step">
-            <i class="fas fa-check"></i>
-            <span>غير الإعداد إلى "السماح" أو "Allow"</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- شاشة تسجيل الدخول -->
-  <div class="login-screen" id="loginScreen">
-    <div class="login-container">
-      <div class="login-logo">أور</div>
-      <h1 class="login-title" id="loginTitle">تسجيل الدخول</h1>
-      
-      <div id="alertContainer"></div>
-      
-      <form id="authForm">
-        <div class="form-group">
-          <label for="email">البريد الإلكتروني</label>
-          <input type="email" id="email" class="form-control" required placeholder="example@email.com">
-        </div>
-        
-        <div class="form-group">
-          <label for="password">كلمة المرور</label>
-          <input type="password" id="password" class="form-control" required placeholder="********">
-        </div>
-        
-        <div class="remember-me">
-          <input type="checkbox" id="rememberMe" checked>
-          <label for="rememberMe">تذكرني على هذا الجهاز</label>
-        </div>
-        
-        <button type="submit" class="submit-btn" id="submitBtn">
-          <span id="submitText">تسجيل الدخول</span>
-          <div class="spinner" id="formSpinner" style="display: none;"></div>
-        </button>
-      </form>
-      
-      <div>
-        <span id="toggleText">ليس لديك حساب؟ </span>
-        <span class="toggle-form" id="toggleForm">إنشاء حساب</span>
-      </div>
-    </div>
-  </div>
-
   <!-- المحتوى الرئيسي -->
   <div class="main-content" id="mainContent">
     <header>
       <div class="header-content">
         <div class="typing-text" aria-live="polite">
-          <!-- التعديل: جعل النص الأول "مكتب أور" وباقي النصوص كما تريد -->
           <span class="active">مكتب أور</span>
           <span>للخدمات الإلكترونية</span>
           <span>نسعى لخدمتكم</span>
@@ -1015,65 +409,22 @@
         </div>
         
         <div class="user-info" id="userInfo">
-          <div class="welcome-user" id="welcomeUser">مرحباً!</div>
-          <div class="user-avatar" id="userAvatar">أ</div>
-          <button class="logout-btn" id="logoutBtn">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>خروج</span>
-          </button>
+          <div class="user-avatar" id="userAvatar">ز</div>
         </div>
       </div>
     </header>
 
     <main>
       <div class="welcome-text">
-        <div class="welcome-message" id="welcomeMessage">مرحباً في مكتب أور</div>
+        <div class="welcome-message" id="welcomeMessage">مكتب أور للخدمات الإلكترونية</div>
       </div>
       
-      <section class="hero">
-        <h1>مكتب أور للخدمات الإلكترونية</h1>
-        <p>نقدم لكم مجموعة متكاملة من الخدمات الإلكترونية بأعلى معايير الجودة</p>
-      </section>
-      
-      <div class="features-section">
-        <h2 class="section-title">خدماتنا</h2>
+      <div class="services-section">
+        <h2 class="section-title">خدماتنا المتاحة</h2>
         <div id="buttons-container">
           <div class="loading">
             <div class="spinner"></div>
             <p>جاري تحميل الخدمات...</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="features-section">
-        <h2 class="section-title">مميزاتنا</h2>
-        <div class="features-grid">
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="feature-content">
-              <h3>أمان وحماية</h3>
-              <p>نضمن حماية بياناتك بأعلى معايير الأمان</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-clock"></i>
-            </div>
-            <div class="feature-content">
-              <h3>خدمة 24/7</h3>
-              <p>خدمة عملاء متاحة على مدار الساعة</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <div class="feature-content">
-              <h3>سرعة الأداء</h3>
-              <p>إنجاز الخدمات في أسرع وقت</p>
-            </div>
           </div>
         </div>
       </div>
@@ -1086,16 +437,6 @@
 
   <script type="module">
     // إعدادات Firebase
-    const authFirebaseConfig = {
-      apiKey: "AIzaSyCzpxIaiiwy-Fxl8iDICAITfj8mpFrYWhk",
-      authDomain: "iraq-b3faf.firebaseapp.com",
-      projectId: "iraq-b3faf",
-      storageBucket: "iraq-b3faf.firebasestorage.app",
-      messagingSenderId: "37770666033",
-      appId: "1:37770666033:web:359a45537323485d0a3510",
-      measurementId: "G-BWMXLSKECR"
-    };
-
     const servicesFirebaseConfig = {
       apiKey: "AIzaSyDQES1QM4s9yDJ49hldDwI_ictXZDciPCk",
       authDomain: "ur111-824e3.firebaseapp.com",
@@ -1109,73 +450,23 @@
     // Import Firebase SDK
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
     import { 
-      getAuth, 
-      createUserWithEmailAndPassword, 
-      signInWithEmailAndPassword, 
-      signOut,
-      onAuthStateChanged,
-      setPersistence,
-      browserSessionPersistence,
-      browserLocalPersistence
-    } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-    import { 
       getFirestore, 
       doc, 
-      getDoc, 
-      setDoc,
-      collection,
-      addDoc
+      getDoc
     } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
-    // Initialize Firebase Apps
-    const authApp = initializeApp(authFirebaseConfig, "authApp");
+    // Initialize Firebase App
     const servicesApp = initializeApp(servicesFirebaseConfig, "servicesApp");
-    
-    const auth = getAuth(authApp);
-    const authDb = getFirestore(authApp);
     const servicesDb = getFirestore(servicesApp);
 
     // عناصر DOM
     const splashScreen = document.getElementById('splashScreen');
-    const locationModal = document.getElementById('locationModal');
-    const loginScreen = document.getElementById('loginScreen');
     const mainContent = document.getElementById('mainContent');
     const loadingProgress = document.getElementById('loadingProgress');
     const loadingText = document.getElementById('loadingText');
-    
-    // عناصر نافذة الموقع
-    const allowLocationBtn = document.getElementById('allowLocationBtn');
-    const openSettingsBtn = document.getElementById('openSettingsBtn');
-    const locationError = document.getElementById('locationError');
-    const errorMessage = document.getElementById('errorMessage');
-    const locationGuide = document.getElementById('locationGuide');
-    
-    // عناصر نظام التسجيل
-    const authForm = document.getElementById('authForm');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const rememberMe = document.getElementById('rememberMe');
-    const submitBtn = document.getElementById('submitBtn');
-    const submitText = document.getElementById('submitText');
-    const formSpinner = document.getElementById('formSpinner');
-    const toggleForm = document.getElementById('toggleForm');
-    const toggleText = document.getElementById('toggleText');
-    const loginTitle = document.getElementById('loginTitle');
-    const alertContainer = document.getElementById('alertContainer');
-    const userInfo = document.getElementById('userInfo');
-    const welcomeUser = document.getElementById('welcomeUser');
-    const userAvatar = document.getElementById('userAvatar');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const welcomeMessage = document.getElementById('welcomeMessage');
     const buttonsContainer = document.getElementById('buttons-container');
 
-    let isLoginMode = true;
     let current = 0;
-    let userLocation = null;
-    let locationAttempts = 0;
-    
-    // التعديل 1: تخزين حالة عرض نافذة الموقع
-    let locationModalShown = localStorage.getItem('locationModalShown') === 'true';
 
     // دالة التحميل
     function simulateLoading() {
@@ -1189,7 +480,7 @@
           loadingText.textContent = "جاهز!";
           setTimeout(() => {
             splashScreen.classList.add('hidden');
-            checkLocationPermission();
+            showMainContent();
           }, 500);
         } else {
           updateProgress(progress);
@@ -1203,231 +494,10 @@
       loadingProgress.style.width = percent + '%';
     }
 
-    // نظام الموقع
-    function checkLocationPermission() {
-      if (!navigator.geolocation) {
-        showLocationError('المتصفح لا يدعم تحديد الموقع');
-        // التعديل 1: التحقق إذا كانت النافذة قد ظهرت من قبل
-        if (!locationModalShown) {
-          showLocationModal();
-        } else {
-          checkExistingAuth();
-        }
-        return;
-      }
-      
-      navigator.permissions.query({name: 'geolocation'}).then((result) => {
-        if (result.state === 'granted') {
-          getUserLocation().then(location => {
-            userLocation = location;
-            checkExistingAuth();
-          });
-        } else {
-          // التعديل 1: التحقق إذا كانت النافذة قد ظهرت من قبل
-          if (!locationModalShown) {
-            showLocationModal();
-          } else {
-            checkExistingAuth();
-          }
-        }
-      });
-    }
-
-    function showLocationModal() {
-      locationModal.classList.add('active');
-      // التعديل 1: حفظ حالة عرض النافذة
-      locationModalShown = true;
-      localStorage.setItem('locationModalShown', 'true');
-    }
-
-    function hideLocationModal() {
-      locationModal.classList.remove('active');
-    }
-
-    function showLocationError(message) {
-      errorMessage.textContent = message;
-      locationError.classList.add('active');
-      locationAttempts++;
-      
-      if (locationAttempts >= 2) {
-        locationGuide.classList.add('active');
-      }
-    }
-
-    async function getUserLocation() {
-      return new Promise((resolve, reject) => {
-        const options = {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 60000
-        };
-
-        navigator.geolocation.getCurrentPosition(
-          async (position) => {
-            const { latitude, longitude } = position.coords;
-            const cityName = await getCityNameFromCoordinates(latitude, longitude);
-            
-            resolve({
-              latitude,
-              longitude,
-              city: cityName,
-              timestamp: new Date().toISOString()
-            });
-          },
-          (error) => {
-            let errorMsg = 'حدث خطأ في الحصول على الموقع';
-            switch (error.code) {
-              case error.PERMISSION_DENIED:
-                errorMsg = 'تم رفض إذن الموقع. يرجى السماح بالوصول إلى الموقع';
-                break;
-              case error.POSITION_UNAVAILABLE:
-                errorMsg = 'معلومات الموقع غير متاحة';
-                break;
-              case error.TIMEOUT:
-                errorMsg = 'انتهت مهلة طلب الموقع';
-                break;
-            }
-            reject(new Error(errorMsg));
-          },
-          options
-        );
-      });
-    }
-
-    async function getCityNameFromCoordinates(lat, lng) {
-      try {
-        const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=ar`);
-        const data = await response.json();
-        return data.city || data.locality || 'غير معروف';
-      } catch (error) {
-        return 'غير معروف';
-      }
-    }
-
-    function openLocationSettings() {
-      if (navigator.userAgent.includes('Chrome')) {
-        window.open('chrome://settings/content/location', '_blank');
-      } else {
-        locationGuide.classList.add('active');
-      }
-    }
-
-    // نظام المصادقة
-    function checkExistingAuth() {
-      const user = auth.currentUser;
-      if (user) {
-        handleUserAuth(user);
-      } else {
-        loginScreen.style.display = 'flex';
-        hideLocationModal();
-      }
-    }
-
-    async function handleUserAuth(user) {
-      try {
-        const userExists = await checkUserExists(user.uid);
-        if (!userExists) {
-          await signOut(auth);
-          throw new Error('الحساب غير موجود في النظام');
-        }
-        
-        const userDoc = await getDoc(doc(authDb, "users", user.uid));
-        const userData = userDoc.data();
-        
-        if (userData.status !== 'approved') {
-          await signOut(auth);
-          throw new Error('حسابك قيد الانتظار. يرجى انتظار الموافقة من الإدارة');
-        }
-        
-        loginScreen.style.display = 'none';
-        mainContent.style.display = 'flex';
-        updateUserUI(userData);
-        loadButtonsData();
-        
-      } catch (error) {
-        loginScreen.style.display = 'flex';
-        showAlert(error.message, 'warning');
-      }
-    }
-
-    async function checkUserExists(userId) {
-      try {
-        const userDoc = await getDoc(doc(authDb, "users", userId));
-        return userDoc.exists();
-      } catch (error) {
-        return false;
-      }
-    }
-
-    async function loginUser(email, password, remember) {
-      try {
-        const persistence = remember ? browserLocalPersistence : browserSessionPersistence;
-        await setPersistence(auth, persistence);
-        
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        await handleUserAuth(userCredential.user);
-        showAlert('تم تسجيل الدخول بنجاح!', 'success');
-        
-      } catch (error) {
-        let errorMessage = 'حدث خطأ أثناء تسجيل الدخول';
-        switch (error.code) {
-          case 'auth/invalid-email': errorMessage = 'البريد الإلكتروني غير صحيح'; break;
-          case 'auth/user-not-found': errorMessage = 'لا يوجد حساب بهذا البريد'; break;
-          case 'auth/wrong-password': errorMessage = 'كلمة المرور غير صحيحة'; break;
-          default: errorMessage = error.message || errorMessage;
-        }
-        throw new Error(errorMessage);
-      }
-    }
-
-    async function registerUser(email, password) {
-      try {
-        if (!userLocation) {
-          throw new Error('يجب السماح بالوصول إلى الموقع لإنشاء حساب جديد');
-        }
-
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        
-        const userData = {
-          username: email.split('@')[0],
-          email: email,
-          status: 'pending',
-          registrationDate: new Date().toISOString(),
-          location: userLocation,
-          createdAt: new Date().toISOString()
-        };
-        
-        await setDoc(doc(authDb, "users", user.uid), userData);
-        await addDoc(collection(authDb, "pending_approvals"), {
-          userId: user.uid,
-          email: email,
-          location: userLocation,
-          createdAt: new Date().toISOString()
-        });
-        
-        showAlert('تم إنشاء الحساب بنجاح! يرجى انتظار الموافقة', 'success');
-        setTimeout(async () => {
-          await signOut(auth);
-          toggleAuthMode();
-        }, 2000);
-        
-      } catch (error) {
-        let errorMessage = 'حدث خطأ أثناء إنشاء الحساب';
-        switch (error.code) {
-          case 'auth/email-already-in-use': errorMessage = 'هذا البريد الإلكتروني مستخدم'; break;
-          case 'auth/weak-password': errorMessage = 'كلمة المرور ضعيفة'; break;
-          default: errorMessage = error.message || errorMessage;
-        }
-        throw new Error(errorMessage);
-      }
-    }
-
-    function updateUserUI(userData) {
-      const displayName = userData.username || userData.email.split('@')[0];
-      welcomeUser.textContent = `مرحباً، ${displayName}!`;
-      userAvatar.textContent = displayName.charAt(0).toUpperCase();
-      welcomeMessage.textContent = `مرحباً ${displayName} في مكتب أور`;
+    // عرض المحتوى الرئيسي مباشرة (بدون تسجيل دخول)
+    function showMainContent() {
+      mainContent.style.display = 'flex';
+      loadButtonsData();
     }
 
     async function loadButtonsData() {
@@ -1437,6 +507,7 @@
         const data = snapshot.exists() ? snapshot.data().buttons : [];
         renderButtons(Array.isArray(data) ? data : []);
       } catch (err) {
+        console.error("Error loading buttons:", err);
         buttonsContainer.innerHTML = '<p style="color:lightgray; text-align:center; padding: 20px;">حدث خطأ في تحميل الخدمات.</p>';
       }
     }
@@ -1457,22 +528,19 @@
         const serviceCard = document.createElement('div');
         serviceCard.className = 'service-card';
         serviceCard.innerHTML = `
-          <div class="service-icon">
-            <i class="fas fa-concierge-bell"></i>
-          </div>
           <h3 class="service-title">${btn.name || 'خدمة'}</h3>
-          <p class="service-description">${btn.description || 'خدمة متميزة من مكتب أور'}</p>
           <div class="service-action">
-            <button class="service-btn">${btn.paused ? 'غير متاح' : 'استخدم الخدمة'}</button>
-            <div class="service-status">
-              <div class="status-dot ${btn.paused ? 'offline' : ''}"></div>
-              <span>${btn.paused ? 'غير متاح' : 'متاح'}</span>
-            </div>
+            <button class="service-btn ${btn.paused ? 'disabled' : ''}">
+              ${btn.paused ? 'غير متاح' : 'انتقل'}
+            </button>
           </div>
         `;
         
         if (!btn.paused && btn.url) {
           serviceCard.onclick = () => window.open(btn.url, '_blank');
+        } else if (btn.paused) {
+          serviceCard.style.opacity = '0.7';
+          serviceCard.style.cursor = 'not-allowed';
         }
         
         servicesGrid.appendChild(serviceCard);
@@ -1481,35 +549,7 @@
       buttonsContainer.appendChild(servicesGrid);
     }
 
-    function showAlert(message, type = 'danger') {
-      alertContainer.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
-    }
-
-    function toggleAuthMode() {
-      isLoginMode = !isLoginMode;
-      
-      if (isLoginMode) {
-        loginTitle.textContent = 'تسجيل الدخول';
-        submitText.textContent = 'تسجيل الدخول';
-        toggleText.textContent = 'ليس لديك حساب؟ ';
-        toggleForm.textContent = 'إنشاء حساب';
-      } else {
-        if (!userLocation) {
-          showAlert('يجب السماح بالموقع أولاً لإنشاء حساب', 'warning');
-          showLocationModal();
-          return;
-        }
-        loginTitle.textContent = 'إنشاء حساب جديد';
-        submitText.textContent = 'إنشاء حساب';
-        toggleText.textContent = 'لديك حساب بالفعل؟ ';
-        toggleForm.textContent = 'تسجيل الدخول';
-      }
-      
-      authForm.reset();
-      alertContainer.innerHTML = '';
-    }
-
-    // التعديل 2: حركة الشريط العلوي مع النصوص المطلوبة
+    // حركة الشريط العلوي مع النصوص المطلوبة
     function startHeaderAnimation() {
       const texts = document.querySelectorAll('.typing-text span');
       setInterval(() => {
@@ -1518,80 +558,6 @@
         texts[current].classList.add('active');
       }, 3000);
     }
-
-    // الأحداث
-    allowLocationBtn.addEventListener('click', async () => {
-      try {
-        allowLocationBtn.disabled = true;
-        allowLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحديد...';
-        
-        userLocation = await getUserLocation();
-        hideLocationModal();
-        checkExistingAuth();
-        
-      } catch (error) {
-        showLocationError(error.message);
-        allowLocationBtn.disabled = false;
-        allowLocationBtn.innerHTML = '<i class="fas fa-check-circle"></i> موافقة على المشاركة';
-      }
-    });
-
-    openSettingsBtn.addEventListener('click', openLocationSettings);
-
-    authForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const email = emailInput.value.trim();
-      const password = passwordInput.value;
-      const remember = rememberMe.checked;
-      
-      if (!email || !password) {
-        showAlert('يرجى ملء جميع الحقول');
-        return;
-      }
-      
-      submitText.style.display = 'none';
-      formSpinner.style.display = 'inline-block';
-      submitBtn.disabled = true;
-      
-      try {
-        if (isLoginMode) {
-          await loginUser(email, password, remember);
-        } else {
-          await registerUser(email, password);
-        }
-      } catch (error) {
-        showAlert(error.message);
-      } finally {
-        submitText.style.display = 'inline';
-        formSpinner.style.display = 'none';
-        submitBtn.disabled = false;
-      }
-    });
-
-    toggleForm.addEventListener('click', toggleAuthMode);
-    
-    logoutBtn.addEventListener('click', async () => {
-      try {
-        // التعديل 1: مسح حالة نافذة الموقع عند تسجيل الخروج
-        localStorage.removeItem('locationModalShown');
-        locationModalShown = false;
-        
-        await signOut(auth);
-        showAlert('تم تسجيل الخروج بنجاح', 'success');
-      } catch (error) {
-        showAlert('حدث خطأ أثناء تسجيل الخروج');
-      }
-    });
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        handleUserAuth(user);
-      } else {
-        loginScreen.style.display = 'flex';
-        mainContent.style.display = 'none';
-      }
-    });
 
     // بدء التحميل والحركات
     simulateLoading();
